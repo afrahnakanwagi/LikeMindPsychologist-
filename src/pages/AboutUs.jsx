@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FaStar, FaShieldAlt, FaUsers, FaCross } from "react-icons/fa";
-import aboutImage from "../assests/about.png";
+// import aboutImage from "../assests/about.png";
 
 export default function AboutUs() {
   return (
