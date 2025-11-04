@@ -41,6 +41,12 @@ export default function Navbar() {
             </a>
           </li>
           <li>
+            <a href="/services" className="hover:text-[#185a82] transition">
+              Our Services
+            </a>
+          </li>
+
+          <li>
             <a href="#" className="hover:text-[#185a82] transition">
               Books & Resources
             </a>

@@ -8,7 +8,7 @@ export default function AboutUs() {
   return (
     <div style={{ fontFamily: "'Alegreya Sans', sans-serif", color: "#3c3333" }}>
       <Navbar />
-
+<br /><br /><br />
       <main className="max-w-7xl mx-auto px-6 py-16">
         {/* Header */}
         <section className="text-center mb-16">

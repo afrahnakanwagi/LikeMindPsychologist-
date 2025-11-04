@@ -116,7 +116,7 @@ export default function Footer() {
           color: "#b1afaf",
         }}
       >
-        © {new Date().getFullYear()} Live Mind Psychologist. All rights reserved.
+        © {new Date().getFullYear()} Like Mind Psychologist. All rights reserved.
       </p>
     </footer>
   );

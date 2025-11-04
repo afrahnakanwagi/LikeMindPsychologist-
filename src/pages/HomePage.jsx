@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <div className="font-sans text-[#3c3333]" style={{ fontFamily: "'Alegreya Sans', sans-serif" }}>
       <Navbar />
-
+<br /><br /><br />
       {/* Hero Section */}
       <section
         className="text-white text-center py-24 px-4"
