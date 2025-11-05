@@ -67,7 +67,7 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-[#185a82] transition">
+            <a href="/blog" className="hover:text-[#185a82] transition">
               Blog
             </a>
           </li>
@@ -164,7 +164,7 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#" className="block hover:text-[#185a82] transition">
+            <a href="/blog" className="block hover:text-[#185a82] transition">
               Blog
             </a>
           </li>

@@ -58,7 +58,7 @@ export default function Footer() {
               { text: "Books & Resources", href: "/books-resources" },
               { text: "Wellness Programs", href: "/wellness-programs" },
               { text: "Membership", href: "/membership" },
-              { text: "Community Blog", href: "/community-blog" },
+              { text: "Community Blog", href: "/blog" },
               { text: "Therapists Directory", href: "/therapists-directory" },
               { text: "Donate", href: "/donate" },
               { text: "Contact Us", href: "/contact-us" },

@@ -6,6 +6,7 @@ import Services from "./pages/Services";
 import BooksResources from "./pages/BooksResources";
 import Education from "./pages/Education";
 import Membership from "./pages/Membership";
+import Blog from "./pages/Blog";
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/books-resources" element={<BooksResources />} />
         <Route path="/education" element={<Education />} />
         <Route path="/membership" element={<Membership />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </Router>
   );
