@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
-// === Animated Impact Section ===
+// === Impact Section ===
 function ImpactSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
-
   const stats = [
     { stat: 85, suffix: "%", desc: "Report improved overall wellness" },
     { stat: 90, suffix: "%", desc: "Feel more spiritually connected" },
@@ -19,20 +18,20 @@ function ImpactSection() {
   return (
     <section
       ref={ref}
-      className="bg-gradient-to-r from-[#185a82] to-[#2a7fa6] text-white py-16"
+      className="bg-gradient-to-r from-[#185a82] to-[#1c8ca0] text-white py-20"
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-2xl font-semibold mb-8">Our Impact</h2>
+        <h2 className="text-3xl font-bold mb-10">Our Impact</h2>
         <div className="grid md:grid-cols-4 gap-8">
           {stats.map((item, i) => (
             <motion.div
               key={i}
-              className="bg-white/10 p-6 rounded-xl shadow-sm"
+              className="bg-white/10 p-8 rounded-2xl backdrop-blur-md shadow-md"
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.2, duration: 0.6, ease: "easeOut" }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
             >
-              <p className="text-3xl font-bold mb-2">
+              <p className="text-4xl font-bold mb-2">
                 {inView && (
                   <CountUp
                     start={0}
@@ -52,7 +51,7 @@ function ImpactSection() {
   );
 }
 
-// === Scroll Fade-in Animation Wrapper ===
+// === Fade-in Wrapper ===
 const FadeInWhenVisible = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
   return (
@@ -67,257 +66,261 @@ const FadeInWhenVisible = ({ children, delay = 0 }) => {
   );
 };
 
-// === MAIN PAGE COMPONENT ===
+// === MAIN COMPONENT ===
 export default function Services() {
   return (
-    <div className="bg-gray-50 text-[#3c3333] font-['Alegreya_Sans']">
+    <div className="bg-gradient-to-b from-[#e6f4f5] via-white to-[#f8fbfc] text-[#3c3333] font-['Alegreya_Sans'] overflow-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-[#e4f5f6] to-white text-center">
-        <h1 className="text-3xl md:text-4xl font-semibold mb-4">
-          Comprehensive Wellness Services
-        </h1>
-        <p className="text-[#185a82] mb-2">
-          Holistic mental and spiritual care designed to support your complete
-          wellness journey
-        </p>
-        <p className="max-w-3xl mx-auto text-sm md:text-base">
-          through evidence-based practices and compassionate guidance
-        </p>
-      </section>
+      {/* ================= HERO SECTION ================= */}
+      <section className="relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+            alt="Therapist session background"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-[#e6f4f5]/70 to-white"></div>
+        </div>
 
-      {/* Core Services */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-semibold text-center mb-10">
-          Our Core Services
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Book Club Membership",
-              desc: "Monthly curated books for mental and spiritual growth, led by licensed psychologists.",
-            },
-            {
-              title: "Wellness Consultations",
-              desc: "One-on-one sessions with licensed psychologists for personalized guidance.",
-            },
-            {
-              title: "Group Therapy Circles",
-              desc: "Facilitated group discussions to enhance collective healing and insight.",
-            },
-            {
-              title: "Online Courses & Workshops",
-              desc: "Engage in accredited courses on mental health, spirituality, and wellness.",
-            },
-            {
-              title: "Resource Library",
-              desc: "Access e-books, meditations, and educational materials to support your growth.",
-            },
-            {
-              title: "Community Events",
-              desc: "Join monthly wellness activities and retreats to connect and grow together.",
-            },
-          ].map((item, i) => (
-            <FadeInWhenVisible key={i} delay={i * 0.1}>
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <h3 className="font-semibold text-lg mb-2 text-[#185a82]">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            </FadeInWhenVisible>
-          ))}
+        {/* Hero content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-40 flex flex-col md:flex-row items-center justify-between">
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="md:w-1/2 text-center md:text-left"
+          >
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#185a82] mb-6 leading-tight">
+              Compassionate Care for <br />
+              <span className="text-[#1c8ca0]">Mind, Body & Spirit</span>
+            </h1>
+            <p className="text-gray-700 text-lg mb-8 leading-relaxed">
+              Experience holistic wellness services designed to nurture your
+              emotional, mental, and spiritual health — guided by licensed
+              professionals and compassionate mentors.
+            </p>
+            <div className="flex justify-center md:justify-start gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="bg-[#185a82] text-white px-6 py-3 rounded-full text-sm md:text-base shadow-md hover:bg-[#134961] transition"
+              >
+                Explore Services
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="border-2 border-[#185a82] text-[#185a82] px-6 py-3 rounded-full text-sm md:text-base hover:bg-[#185a82] hover:text-white transition"
+              >
+                Get Consultation
+              </motion.button>
+            </div>
+          </motion.div>
+
+          {/* Hero Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 1 }}
+            className="mt-12 md:mt-0 md:w-1/2 flex justify-center"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+              alt="Wellness and healing"
+              className="rounded-3xl shadow-xl border border-white/60 w-full max-w-md md:max-w-lg"
+            />
+          </motion.div>
         </div>
       </section>
 
-      {/* Services for Individuals */}
-      <section className="bg-[#f5fbfb] py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-center mb-10">
-            Services for Individuals
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Reading Plans Tailored to Your Needs",
-                desc: "Custom reading plans to match your personal growth journey.",
-              },
-              {
-                title: "Reflection Journals and Guided Exercises",
-                desc: "Prompts and activities to deepen self-awareness and spiritual insight.",
-              },
-              {
-                title: "Access to Supportive Community Forums",
-                desc: "Engage with peers and share your journey in moderated forums.",
-              },
-              {
-                title: "Monthly Wellness Check-ins",
-                desc: "Track progress and refine your goals with psychologist check-ins.",
-              },
-            ].map((item, i) => (
-              <FadeInWhenVisible key={i} delay={i * 0.1}>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <h3 className="font-semibold text-lg mb-2 text-[#185a82]">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </FadeInWhenVisible>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ================= CORE SERVICES ================= */}
+      <Section
+        title="Our Core Services"
+        subtitle="Comprehensive care designed for your mind, heart, and soul."
+        cards={[
+          {
+            title: "Book Club Membership",
+            desc: "Join monthly curated book sessions that inspire emotional and spiritual growth.",
+          },
+          {
+            title: "Wellness Consultations",
+            desc: "Personal one-on-one guidance from licensed psychologists for holistic healing.",
+          },
+          {
+            title: "Group Therapy Circles",
+            desc: "Participate in shared healing experiences through group discussions and reflection.",
+          },
+          {
+            title: "Online Courses & Workshops",
+            desc: "Explore self-paced and live sessions on mindfulness, faith, and psychology.",
+          },
+          {
+            title: "Resource Library",
+            desc: "Access ebooks, guided meditations, and learning tools for mental wellness.",
+          },
+          {
+            title: "Community Events",
+            desc: "Connect with others through healing retreats, gatherings, and spiritual workshops.",
+          },
+        ]}
+      />
 
-      {/* Services for Professionals */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-center mb-10">
-            Services for Professionals
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "CE Credit Courses",
-                desc: "Accredited courses on mental health, spirituality, and integration practices.",
-              },
-              {
-                title: "Professional Development Resources",
-                desc: "Access leading-edge research and best practices for clinical growth.",
-              },
-              {
-                title: "Peer Consultation Groups",
-                desc: "Regular groups with psychologists for supervision and peer support.",
-              },
-              {
-                title: "Faith Integration Training",
-                desc: "Specialized training on ethically integrating spirituality into practice.",
-              },
-            ].map((item, i) => (
-              <FadeInWhenVisible key={i} delay={i * 0.1}>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <h3 className="font-semibold text-lg mb-2 text-[#185a82]">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </FadeInWhenVisible>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Animated Impact Section */}
       <ImpactSection />
 
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-semibold text-center mb-10">
-          What Our Clients Say
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              quote:
-                "The book club membership has been transformative for me. The guided discussions led by licensed psychologists have deepened my understanding of mental health.",
-              author: "Sarah Mitchell, Member",
-            },
-            {
-              quote:
-                "The CE-accredited courses and peer consultations have significantly enhanced my clinical skills. The faith integration training has been particularly valuable.",
-              author: "Dr. James Chen, Psychologist",
-            },
-            {
-              quote:
-                "The wellness consultations and community circles have created a safe space for my mental and spiritual health. I feel more balanced and fulfilled.",
-              author: "Maria Rodriguez, Wellness Seeker",
-            },
-          ].map((item, i) => (
+      <Testimonials />
+      <ServicePackages />
+      <CallToAction />
+      <Footer />
+    </div>
+  );
+}
+
+// --------------------------- Reusable Components ---------------------------
+
+function Section({ title, subtitle, cards, bg }) {
+  return (
+    <section
+      className={`py-20 bg-gradient-to-b ${bg || "from-white to-[#f7fafb]"}`}
+    >
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-bold text-[#185a82] mb-3">{title}</h2>
+        <p className="text-gray-600 mb-10">{subtitle}</p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {cards.map((c, i) => (
             <FadeInWhenVisible key={i} delay={i * 0.1}>
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic">
-                “{item.quote}”
-                <p className="mt-4 font-semibold text-[#185a82] not-italic">
-                  — {item.author}
-                </p>
+              <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition">
+                <h3 className="text-lg font-semibold text-[#185a82] mb-3">
+                  {c.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{c.desc}</p>
               </div>
             </FadeInWhenVisible>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* Service Packages */}
-      <section className="bg-[#f5fbfb] py-16">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-semibold mb-10">Service Packages</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Individual Wellness",
-                price: "$49/month",
-                features: [
-                  "Monthly book club membership",
-                  "Access to resource library",
-                  "Community forum access",
-                  "Monthly wellness check-ins",
-                ],
-              },
-              {
-                title: "Professional Development",
-                price: "$149/month",
-                features: [
-                  "CE-accredited courses",
-                  "Peer consultation groups",
-                  "Faith integration training",
-                  "Professional resource library",
-                ],
-              },
-              {
-                title: "Community Group",
-                price: "$299/month",
-                features: [
-                  "Unlimited group therapy circles",
-                  "Monthly community retreats",
-                  "Dedicated coordinator support",
-                ],
-              },
-            ].map((item, i) => (
-              <FadeInWhenVisible key={i} delay={i * 0.1}>
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                  <h3 className="font-semibold text-lg mb-2 text-[#185a82]">
-                    {item.title}
-                  </h3>
-                  <p className="text-xl font-bold mb-4">{item.price}</p>
-                  <ul className="text-sm mb-6 space-y-2">
-                    {item.features.map((f, idx) => (
-                      <li key={idx}>✓ {f}</li>
-                    ))}
-                  </ul>
-                  <button className="bg-[#185a82] text-white px-5 py-2 rounded-full hover:bg-[#134961] transition">
-                    Get Started
-                  </button>
-                </div>
-              </FadeInWhenVisible>
-            ))}
-          </div>
-        </div>
-      </section>
+function Testimonials() {
+  const data = [
+    {
+      quote:
+        "The book club has changed how I view healing — it’s more than reading; it’s connection and transformation.",
+      author: "Sarah Mitchell, Member",
+    },
+    {
+      quote:
+        "The CE-accredited programs and peer groups have deepened my professional empathy and clinical insight.",
+      author: "Dr. James Chen, Psychologist",
+    },
+    {
+      quote:
+        "I feel seen, heard, and renewed after every consultation. It’s holistic healing at its finest.",
+      author: "Maria Rodriguez, Wellness Seeker",
+    },
+  ];
 
-      {/* Call to Action */}
-      <section className="text-center py-16">
-        <h2 className="text-xl md:text-2xl font-semibold mb-3">
-          Start Your Wellness Journey Today
+  return (
+    <section className="py-20 max-w-6xl mx-auto px-6 text-center">
+      <h2 className="text-3xl font-bold text-[#185a82] mb-10">
+        What Our Clients Say
+      </h2>
+      <div className="grid md:grid-cols-3 gap-8">
+        {data.map((item, i) => (
+          <FadeInWhenVisible key={i} delay={i * 0.1}>
+            <div className="bg-white p-8 rounded-2xl shadow-md border italic hover:shadow-xl transition">
+              “{item.quote}”
+              <p className="mt-4 font-semibold text-[#185a82] not-italic">
+                — {item.author}
+              </p>
+            </div>
+          </FadeInWhenVisible>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ServicePackages() {
+  const packages = [
+    {
+      title: "Individual Wellness",
+      price: "$49/month",
+      features: [
+        "Monthly book club membership",
+        "Access to resource library",
+        "Community forum access",
+        "Monthly check-ins",
+      ],
+    },
+    {
+      title: "Professional Development",
+      price: "$149/month",
+      features: [
+        "CE-accredited courses",
+        "Peer consultation groups",
+        "Faith integration training",
+        "Resource library access",
+      ],
+    },
+    {
+      title: "Community Group",
+      price: "$299/month",
+      features: [
+        "Unlimited therapy circles",
+        "Monthly retreats",
+        "Dedicated coordinator",
+      ],
+    },
+  ];
+
+  return (
+    <section className="bg-[#f5fbfb] py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-[#185a82] mb-10">
+          Service Packages
         </h2>
-        <p className="max-w-2xl mx-auto mb-6 text-sm md:text-base">
-          Take the first step toward comprehensive mental and spiritual wellness.
-          Our licensed psychologists are here to guide you with compassion and
-          evidence-based care.
-        </p>
-        <button className="bg-[#185a82] text-white px-6 py-3 rounded-full hover:bg-[#134961] transition">
-          Explore Services
-        </button>
-      </section>
+        <div className="grid md:grid-cols-3 gap-8">
+          {packages.map((item, i) => (
+            <FadeInWhenVisible key={i} delay={i * 0.1}>
+              <div className="bg-white p-10 rounded-2xl shadow-md border hover:shadow-xl transition">
+                <h3 className="text-lg font-semibold text-[#185a82] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-2xl font-bold mb-4">{item.price}</p>
+                <ul className="text-sm mb-6 space-y-2 text-gray-700">
+                  {item.features.map((f, idx) => (
+                    <li key={idx}>✓ {f}</li>
+                  ))}
+                </ul>
+                <button className="bg-[#185a82] text-white px-5 py-2 rounded-full hover:bg-[#134961] transition">
+                  Get Started
+                </button>
+              </div>
+            </FadeInWhenVisible>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-      <Footer />
-    </div>
+function CallToAction() {
+  return (
+    <section className="text-center py-20 bg-white">
+      <h2 className="text-3xl font-bold text-[#185a82] mb-4">
+        Start Your Wellness Journey Today
+      </h2>
+      <p className="max-w-2xl mx-auto mb-6 text-gray-700">
+        Take the first step toward comprehensive mental and spiritual wellness.
+        Our psychologists and wellness coaches are here to walk with you.
+      </p>
+      <button className="bg-[#185a82] text-white px-8 py-3 rounded-full hover:bg-[#134961] transition">
+        Get Started
+      </button>
+    </section>
   );
 }

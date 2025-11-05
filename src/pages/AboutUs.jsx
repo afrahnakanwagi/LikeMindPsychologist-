@@ -2,266 +2,229 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FaStar, FaShieldAlt, FaUsers, FaCross } from "react-icons/fa";
-// import aboutImage from "../assests/about.png";
 
 export default function AboutUs() {
   return (
-    <div style={{ fontFamily: "'Alegreya Sans', sans-serif", color: "#3c3333" }}>
+    <div style={{ fontFamily: "'Alegreya Sans', sans-serif" }}>
       <Navbar />
-<br /><br /><br />
-      <main className="max-w-7xl mx-auto px-6 py-16">
-        {/* Header */}
-        <section className="text-center mb-16">
+
+      {/* Hero Section */}
+      <section
+        className="relative bg-cover bg-center bg-no-repeat text-white py-32 px-6"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1920&q=80')",
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="relative z-10 text-center max-w-3xl mx-auto">
           <h1
-            className="text-4xl font-bold mb-4"
+            className="text-5xl font-bold mb-4"
             style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
           >
             About Like Mind Psychologist
           </h1>
-          <p className="text-[#185a82] text-sm md:text-base">
-            Cultivating Excellence in Clinical Practice Through Faith, Community, and Continuing Education
+          <p className="text-lg italic text-gray-200">
+            “Faith and Psychology in Harmony — Cultivating Excellence, Connection, and Purpose.”
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* Our Story */}
-        <section className="max-w-4xl mx-auto mb-20 leading-relaxed text-sm md:text-base">
-          <h2 className="text-2xl font-semibold mb-6" style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}>
+      {/* Our Story */}
+      <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2
+            className="text-3xl font-semibold mb-6 text-[#185a82]"
+            style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+          >
             Our Story
           </h2>
-          <p className="mb-4">
-            Like Mind Psychologist Book Club was founded with a singular vision: to create a vibrant, faith-based community where licensed psychologists can deepen their clinical expertise while integrating their spiritual values into their practice. Recognizing the unique challenges faced by mental health professionals seeking to align their professional work with their personal faith, we established this community as a sanctuary for intellectual growth and spiritual nourishment.
+          <p className="text-gray-700 mb-4">
+            Like Mind Psychologist was founded to build a faith-based space for
+            psychologists seeking to deepen their clinical practice while
+            aligning with spiritual values. It began as a small circle of
+            clinicians passionate about combining evidence-based therapy with
+            the power of faith and empathy.
           </p>
-          <p>
-            Our journey began with a small group of dedicated clinicians who believed that the most transformative therapeutic relationships emerge when practitioners cultivate both clinical excellence and spiritual authenticity. Today, we continue to honor that foundational vision by providing curated resources, fostering meaningful connections, and supporting the holistic development of psychologists committed to faith-integrated practice.
+          <p className="text-gray-700">
+            Today, that small circle has evolved into a thriving community —
+            supporting mental health professionals worldwide through shared
+            wisdom, faith integration, and clinical growth.
           </p>
-        </section>
+        </div>
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1526662092594-e98c1e356d6a?auto=format&fit=crop&w=900&q=80"
+            alt="Our Story"
+            className="rounded-2xl shadow-lg"
+          />
+        </div>
+      </section>
 
-        {/* Our Mission */}
-        <section className="max-w-5xl mx-auto mb-20 text-center">
-          <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}>
-            Our Mission
-          </h2>
-          <p className="italic text-[#185a82] max-w-3xl mx-auto mb-10">
-            To empower licensed psychologists to achieve clinical excellence while integrating faith and values into their therapeutic practice, fostering a supportive community of like-minded professionals.
-          </p>
+      {/* Mission Section */}
+      <section className="bg-[#f0f9fa] py-20 text-center px-6">
+        <h2
+          className="text-3xl font-semibold mb-6 text-[#185a82]"
+          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+        >
+          Our Mission
+        </h2>
+        <p className="max-w-3xl mx-auto mb-10 text-gray-600">
+          To empower licensed psychologists to achieve clinical excellence while
+          integrating faith and values into practice — nurturing both
+          professional and spiritual growth.
+        </p>
 
-          <div className="grid md:grid-cols-2 gap-8 text-left">
-            {[
-              {
-                title: "Foster Clinical Excellence",
-                desc: "We are committed to advancing evidence-based practice and professional development through carefully curated clinical literature, continuing education, and peer collaboration that elevates the standard of psychological care.",
-                icon: <FaStar className="text-[#185a82] text-3xl mb-3" />,
-              },
-              {
-                title: "Build Community",
-                desc: "We create meaningful connections among psychologists who share common values, providing networking opportunities, mentorship, and collaborative spaces where professionals can grow together and support one another.",
-                icon: <FaUsers className="text-[#185a82] text-3xl mb-3" />,
-              },
-              {
-                title: "Integrate Faith & Practice",
-                desc: "We honor the integration of spiritual values and clinical work, recognizing that faith-informed psychology enriches therapeutic relationships and promotes holistic healing for both practitioners and their clients.",
-                icon: <FaCross className="text-[#185a82] text-3xl mb-3" />,
-              },
-              {
-                title: "Support Professional Growth",
-                desc: "We provide comprehensive resources, continuing education credits, and professional development opportunities that enable psychologists to advance their careers while maintaining ethical standards and personal integrity.",
-                icon: <FaShieldAlt className="text-[#185a82] text-3xl mb-3" />,
-              },
-            ].map(({ title, desc, icon }, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-lg shadow-md p-6"
-                style={{ color: "#3c3333" }}
-              >
-                {icon}
-                <h3 className="font-semibold mb-2">{title}</h3>
-                <p className="text-sm">{desc}</p>
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              icon: <FaStar className="text-4xl text-[#185a82] mb-4 mx-auto" />,
+              title: "Excellence",
+              desc: "Elevating the standard of clinical care through ongoing education and research.",
+            },
+            {
+              icon: <FaUsers className="text-4xl text-[#185a82] mb-4 mx-auto" />,
+              title: "Community",
+              desc: "Building lasting professional and spiritual connections among psychologists.",
+            },
+            {
+              icon: <FaCross className="text-4xl text-[#185a82] mb-4 mx-auto" />,
+              title: "Faith Integration",
+              desc: "Bridging faith and psychology for a holistic therapeutic approach.",
+            },
+            {
+              icon: (
+                <FaShieldAlt className="text-4xl text-[#185a82] mb-4 mx-auto" />
+              ),
+              title: "Integrity",
+              desc: "Upholding ethical and moral principles in every aspect of practice.",
+            },
+          ].map(({ icon, title, desc }, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105"
+            >
+              {icon}
+              <h3 className="font-semibold mb-2 text-lg">{title}</h3>
+              <p className="text-sm text-gray-600">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* What We Offer */}
+      <section className="max-w-6xl mx-auto py-20 px-6 text-center">
+        <h2
+          className="text-3xl font-semibold text-[#185a82] mb-10"
+          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+        >
+          What We Offer
+        </h2>
+        <div className="grid md:grid-cols-4 gap-8">
+          {[
+            {
+              img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+              title: "Curated Clinical Books",
+            },
+            {
+              img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+              title: "CE Credit Courses",
+            },
+            {
+              img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80",
+              title: "Professional Community",
+            },
+            {
+              img: "https://images.unsplash.com/photo-1520975926219-57c6f1aa8680?auto=format&fit=crop&w=800&q=80",
+              title: "Faith-Based Resources",
+            },
+          ].map(({ img, title }, idx) => (
+            <div
+              key={idx}
+              className="rounded-xl overflow-hidden shadow-lg group"
+            >
+              <img
+                src={img}
+                alt={title}
+                className="h-48 w-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lg text-[#185a82] mb-2">
+                  {title}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Explore our growing selection designed to inspire and empower
+                  your professional journey.
+                </p>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* What We Offer */}
-        <section className="max-w-7xl mx-auto mb-20 px-4 md:px-0">
-          <h2
-            className="text-2xl font-semibold text-center mb-10"
-            style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
-          >
-            What We Offer
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8 text-center text-sm text-[#3c3333]">
-            {[
-              {
-                title: "Curated Clinical Books",
-                desc: "Access our expertly selected collection of evidence-based clinical literature, carefully reviewed by experienced practitioners to ensure relevance and quality for modern therapeutic practice.",
-                icon: <FaStar className="mx-auto text-[#185a82] text-4xl mb-4" />,
-              },
-              {
-                title: "CE Credit Courses",
-                desc: "Earn continuing education credits through our comprehensive online and in-person courses, designed to meet licensing requirements while advancing your clinical knowledge and skills.",
-                icon: <FaShieldAlt className="mx-auto text-[#185a82] text-4xl mb-4" />,
-              },
-              {
-                title: "Professional Community",
-                desc: "Connect with like-minded psychologists through networking events, discussion forums, and collaborative learning opportunities that foster meaningful professional relationships and peer support.",
-                icon: <FaUsers className="mx-auto text-[#185a82] text-4xl mb-4" />,
-              },
-              {
-                title: "Faith-Based Resources",
-                desc: "Explore thoughtfully developed resources that help integrate spiritual values into clinical practice, including guides, research, and case studies on faith-informed psychological care.",
-                icon: <FaCross className="mx-auto text-[#185a82] text-4xl mb-4" />,
-              },
-            ].map(({ title, desc, icon }, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-lg shadow-md p-6"
-                style={{ color: "#3c3333" }}
-              >
-                {icon}
-                <h4 className="font-semibold mb-2">{title}</h4>
-                <p className="text-sm">{desc}</p>
+      {/* Leadership Team */}
+      <section className="bg-[#f9fafb] py-20 px-6 text-center">
+        <h2
+          className="text-3xl font-semibold mb-10 text-[#185a82]"
+          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+        >
+          Meet Our Leadership
+        </h2>
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              name: "Dr. Sarah Mitchell",
+              role: "Founder & Clinical Director",
+              img: "https://images.unsplash.com/photo-1614289371518-7c968ccdc877?auto=format&fit=crop&w=800&q=80",
+            },
+            {
+              name: "Dr. James Chen",
+              role: "Education Coordinator",
+              img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
+            },
+            {
+              name: "Dr. Rebecca Thompson",
+              role: "Community Manager",
+              img: "https://images.unsplash.com/photo-1603415526960-f7e0328da6e3?auto=format&fit=crop&w=800&q=80",
+            },
+            {
+              name: "Dr. Michael Rodriguez",
+              role: "Research Director",
+              img: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=800&q=80",
+            },
+          ].map(({ name, role, img }, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+            >
+              <img src={img} alt={name} className="h-56 w-full object-cover" />
+              <div className="p-4">
+                <h3 className="font-semibold text-lg text-[#185a82] mb-1">
+                  {name}
+                </h3>
+                <p className="text-sm italic text-gray-500">{role}</p>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* Core Values */}
-        <section className="max-w-7xl mx-auto mb-20 px-4 md:px-0">
-          <h2
-            className="text-2xl font-semibold text-center mb-10"
-            style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
-          >
-            Our Core Values
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8 text-center text-sm text-[#3c3333]">
-            {[
-              {
-                title: "Excellence",
-                desc: "We are dedicated to the highest standards of clinical practice, continuous learning, and professional development that honor both our clients and our profession.",
-                icon: <FaStar className="mx-auto text-[#185a82] text-3xl mb-2" />,
-              },
-              {
-                title: "Integrity",
-                desc: "We uphold ethical principles, transparency, and authenticity in all our endeavors, ensuring that our actions align with our values and serve the greater good of the mental health community.",
-                icon: <FaShieldAlt className="mx-auto text-[#185a82] text-3xl mb-2" />,
-              },
-              {
-                title: "Community",
-                desc: "We believe in the power of collective wisdom and mutual support, fostering inclusive spaces where diverse perspectives are valued and all members feel welcomed and heard.",
-                icon: <FaUsers className="mx-auto text-[#185a82] text-3xl mb-2" />,
-              },
-              {
-                title: "Faith",
-                desc: "We respect and celebrate the spiritual dimensions of human experience, recognizing that faith can be a source of resilience, meaning, and healing in therapeutic relationships.",
-                icon: <FaCross className="mx-auto text-[#185a82] text-3xl mb-2" />,
-              },
-            ].map(({ title, desc, icon }, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-lg shadow-md p-6"
-                style={{ color: "#3c3333" }}
-              >
-                {icon}
-                <h4 className="font-semibold mb-2">{title}</h4>
-                <p className="text-sm">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Leadership Team */}
-        <section className="max-w-7xl mx-auto mb-20 px-4 md:px-0 text-center">
-          <h2
-            className="text-2xl font-semibold mb-10"
-            style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
-          >
-            Our Leadership Team
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Dr. Sarah Mitchell",
-                role: "Founder & Clinical Director",
-                desc: "Licensed Clinical Psychologist with 15+ years of experience in faith-integrated therapy and organizational leadership.",
-              },
-              {
-                name: "Dr. James Chen",
-                role: "Education Coordinator",
-                desc: "Specializes in curriculum development and continuing education with expertise in evidence-based clinical training.",
-              },
-              {
-                name: "Dr. Rebecca Thompson",
-                role: "Community Engagement Manager",
-                desc: "Dedicated to building meaningful connections and fostering a supportive community of mental health professionals.",
-              },
-              {
-                name: "Dr. Michael Rodriguez",
-                role: "Research & Resources Director",
-                desc: "Leads clinical research initiatives and curates high-quality resources for our professional community.",
-              },
-            ].map(({ name, role, desc }, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-lg shadow-md p-6 text-left"
-                style={{ color: "#3c3333" }}
-              >
-                <div className="h-32 bg-gradient-to-br from-[#9dd5d6] to-[#185a82] rounded-md mb-4 flex items-center justify-center text-white text-4xl font-bold">
-                  {name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </div>
-                <h3 className="font-semibold text-lg mb-1">{name}</h3>
-                <p className="italic text-sm text-[#185a82] mb-3">{role}</p>
-                <p className="text-xs">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Impact By Numbers */}
-        <section className="bg-[#f0f9fa] py-16 px-6 text-center max-w-7xl mx-auto rounded-lg mb-20">
-          <h2
-            className="text-2xl font-semibold mb-10"
-            style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#3c3333" }}
-          >
-            Our Impact By Numbers
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8 text-[#185a82] font-semibold text-lg">
-            {[
-              { label: "Psychologists Served", value: "500+" },
-              { label: "CE Credit Courses", value: "50+" },
-              { label: "Books Reviewed", value: "100+" },
-              { label: "CE Credits Earned", value: "1000+" },
-            ].map(({ label, value }, idx) => (
-              <div key={idx} className="border border-[#185a82] rounded-lg py-6">
-                <p className="text-4xl">{value}</p>
-                <p className="text-sm">{label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Join Our Community */}
-        <section className="text-center mb-24">
-          <h2 className="text-xl font-semibold mb-4" style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}>
-            Join Our Community
-          </h2>
-          <p className="max-w-2xl mx-auto mb-6 text-sm text-[#3c3333]">
-            Become part of a thriving network of psychologists dedicated to clinical excellence and faith-integrated practice. Together, we grow stronger.
-          </p>
-          <button
-            className="bg-[#185a82] text-white px-6 py-2 rounded-full hover:bg-[#134961] transition"
-            style={{ fontFamily: "'Alegreya Sans', sans-serif" }}
-          >
-            Become a Member Today
-          </button>
-        </section>
-      </main>
+      {/* Call to Action */}
+      <section className="py-20 text-center bg-[#185a82] text-white">
+        <h2
+          className="text-3xl font-semibold mb-4"
+          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+        >
+          Join Our Faith-Based Psychology Network
+        </h2>
+        <p className="max-w-2xl mx-auto mb-6 text-gray-200">
+          Be part of a transformative movement — where faith meets clinical
+          excellence and community thrives.
+        </p>
+        <button className="bg-white text-[#185a82] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+          Become a Member
+        </button>
+      </section>
 
       <Footer />
     </div>
