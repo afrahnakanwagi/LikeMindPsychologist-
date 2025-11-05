@@ -8,7 +8,7 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: "rgba(157, 213, 214, 0.6)", // #9dd5d6 pastel cyan with transparency
+        background: "rgba(157, 213, 214, 0.6)", 
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
@@ -31,7 +31,7 @@ export default function Navbar() {
           style={{ fontFamily: "'Alegreya Sans', sans-serif", color: "#3c3333" }}
         >
           <li>
-            <a href="#" className="hover:text-[#185a82] transition">
+            <a href="/" className="hover:text-[#185a82] transition">
               Home
             </a>
           </li>
@@ -47,7 +47,7 @@ export default function Navbar() {
           </li>
 
           <li>
-            <a href="#" className="hover:text-[#185a82] transition">
+            <a href="/books-resources" className="hover:text-[#185a82] transition">
               Books & Resources
             </a>
           </li>
@@ -129,12 +129,22 @@ export default function Navbar() {
           style={{ fontFamily: "'Alegreya Sans', sans-serif", color: "#3c3333" }}
         >
           <li>
-            <a href="#" className="block hover:text-[#185a82] transition">
+            <a href="/" className="block hover:text-[#185a82] transition">
               Home
             </a>
           </li>
+           <li>
+            <a href="/about" className="block hover:text-[#185a82] transition">
+              About Us
+            </a>
+          </li>
+           <li>
+            <a href="/services" className="block hover:text-[#185a82] transition">
+              Our Services
+            </a>
+          </li>
           <li>
-            <a href="#" className="block hover:text-[#185a82] transition">
+            <a href="/books-resources" className="block hover:text-[#185a82] transition">
               Books & Resources
             </a>
           </li>
