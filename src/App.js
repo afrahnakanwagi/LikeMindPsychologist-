@@ -7,6 +7,8 @@ import BooksResources from "./pages/BooksResources";
 import Education from "./pages/Education";
 import Membership from "./pages/Membership";
 import Blog from "./pages/Blog";
+import Donate from "./pages/Donate";
+import Contact from "./pages/Contact";
 function App() {
   return (
     <Router>
@@ -18,6 +20,8 @@ function App() {
         <Route path="/education" element={<Education />} />
         <Route path="/membership" element={<Membership />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/donate" element={<Donate />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

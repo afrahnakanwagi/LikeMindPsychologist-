@@ -61,7 +61,7 @@ export default function Footer() {
               { text: "Community Blog", href: "/blog" },
               { text: "Therapists Directory", href: "/therapists-directory" },
               { text: "Donate", href: "/donate" },
-              { text: "Contact Us", href: "/contact-us" },
+              { text: "Contact Us", href: "/contact" },
             ].map(({ text, href }, i) => (
               <li key={i}>
                 <a

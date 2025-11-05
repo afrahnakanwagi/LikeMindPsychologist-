@@ -72,12 +72,12 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-[#185a82] transition">
+            <a href="/contact" className="hover:text-[#185a82] transition">
               Contact
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-[#185a82] transition">
+            <a href="/donate" className="hover:text-[#185a82] transition">
               Donate
             </a>
           </li>
@@ -169,12 +169,12 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#" className="block hover:text-[#185a82] transition">
+            <a href="/contact" className="block hover:text-[#185a82] transition">
               Contact
             </a>
           </li>
           <li>
-            <a href="#" className="block hover:text-[#185a82] transition">
+            <a href="/donate" className="block hover:text-[#185a82] transition">
               Donate
             </a>
           </li>
