@@ -9,6 +9,7 @@ import Membership from "./pages/Membership";
 import Blog from "./pages/Blog";
 import Donate from "./pages/Donate";
 import Contact from "./pages/Contact";
+import Shop from "./pages/Shop";
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/shop" element={<Shop />} />
       </Routes>
     </Router>
   );

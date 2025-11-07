@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+* {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}

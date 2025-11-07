@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+/* Light mode (default) */
+[data-theme="light"] {
+  --bg-primary: #f9f9fb;
+  --text-primary: #3c3333;
+  --accent: #9dd5d6;
+  --cta: #185a82;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --bg-primary: #1e1b1b;
+  --text-primary: #e5e3e3;
+  --accent: #9dd5d6;
+  --cta: #9dd5d6;
+}
+

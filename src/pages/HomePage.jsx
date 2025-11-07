@@ -1,198 +1,361 @@
-import React from "react";
+// src/pages/HomePage.jsx
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import logo from "../assests/logo.png";
+import book from "../assests/book.png";
+
 
 export default function HomePage() {
-  return (
-    <div className="font-sans text-[#3c3333]" style={{ fontFamily: "'Alegreya Sans', sans-serif" }}>
-      <Navbar />
-      <br /><br /><br />
+    const [theme, setTheme] = useState("dark");
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#d8f1f3] via-white to-[#f7fafb]">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1600&q=80"
-            alt="Peaceful reading background"
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-[#e6f4f5]/70 to-white"></div>
-        </div>
+    // Load saved theme or detect system preference
+    useEffect(() => {
+        const saved = localStorage.getItem("theme");
+        if (saved) {
+            setTheme(saved);
+        } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            setTheme("light");
+        }
+    }, []);
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-24 flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#185a82] mb-6 leading-tight">
-              Empowering <span className="text-[#1c8ca0]">Minds & Spirits</span>  
-              Through Faith-Based Learning
-            </h1>
-            <p className="text-gray-700 text-lg mb-8 leading-relaxed">
-              Join a compassionate community of psychologists exploring wellness, spirituality, and growth through shared reading and discussion.
-            </p>
-            <div className="flex justify-center md:justify-start gap-4">
-              <button className="bg-[#185a82] text-white px-6 py-3 rounded-full shadow-md hover:bg-[#134961] transition">
-                Join the Book Club
-              </button>
-              <button className="border-2 border-[#185a82] text-[#185a82] px-6 py-3 rounded-full hover:bg-[#185a82] hover:text-white transition">
-                Learn More
-              </button>
-            </div>
-          </div>
+    // Apply theme to <html>
+    useEffect(() => {
+        document.documentElement.classList.toggle("light", theme === "light");
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
-          <div className="mt-12 md:mt-0 md:w-1/2 flex justify-center">
-            <img
-              src="https://images.unsplash.com/photo-1523978591478-c753949ff840?auto=format&fit=crop&w=900&q=80"
-              alt="People reading together"
-              className="rounded-3xl shadow-xl border border-white/60 w-full max-w-md md:max-w-lg"
-            />
-          </div>
-        </div>
-      </section>
+    const toggleTheme = () => {
+        setTheme(prev => (prev === "dark" ? "light" : "dark"));
+    };
 
-      {/* Featured Book */}
-      <section className="py-24 bg-[#f9fafb]">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-          <img
-            src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=700&q=80"
-            alt="Featured Book"
-            className="w-full md:w-1/2 rounded-2xl shadow-lg"
-          />
-          <div className="md:w-1/2 text-left">
-            <h2 className="text-3xl font-semibold text-[#185a82] mb-4">
-              The Intersection of Faith and Psychology
-            </h2>
-            <p className="text-gray-700 mb-6 leading-relaxed text-base">
-              Discover the harmony between spiritual wellness and psychological insight. This month’s featured book explores how faith can enrich therapy, healing, and personal transformation.
-            </p>
-            <button className="bg-[#185a82] text-white px-6 py-3 rounded-full hover:bg-[#134961] transition font-semibold">
-              Explore This Month's Pick
+    // Brand Colors
+    const colors = {
+        dark: {
+            bg: "#0f172a",
+            section: "#1A3A5A",
+            card: "#ffffff",
+            text: "#ffffff",
+            muted: "#d1d5db",
+            accent: "#040808ff",
+            lightAccent: "#A8DADC",
+            hover: "#4a8a8a",
+        },
+        light: {
+            bg: "#f8fafa",
+            section: "#A8DADC",
+            card: "#ffffff",
+            text: "#1A3A5A",
+            muted: "#4b5563",
+            accent: "#5DA8A3",
+            lightAccent: "#1A3A5A",
+            hover: "#4a8a8a",
+        },
+    };
+
+    const c = colors[theme];
+
+    return (
+        <div
+            className={`font-sans min-h-screen transition-all duration-500`}
+            style={{
+                fontFamily: "'Alegreya Sans', sans-serif",
+                backgroundColor: c.bg,
+                color: c.text,
+            }}
+        >
+            <Navbar theme={theme} toggleTheme={toggleTheme} colors={c} />
+
+            <br /><br /><br />
+
+            {/* Hero Section */}
+            <section
+                className="relative overflow-hidden"
+                style={{
+                    backgroundColor: "#9dd5d6", // Solid gray-cyan
+                }}
+            >
+                {/* Optional subtle background image with reduced opacity */}
+                <div className="absolute inset-0 opacity-10">
+                    <img
+                        src={logo}
+                        alt="Peaceful reading"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+
+                <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-24 flex flex-col md:flex-row items-center justify-between">
+                    <div className="md:w-1/2 text-center md:text-left">
+                        <h1
+                            className="text-6xl md:text-7xl font-extrabold mb-6 leading-tight"
+                            style={{
+                                fontFamily: "'Alegreya Sans SC', sans-serif",
+                                color: "#3c3333", // Black
+                            }}
+                        >
+                            LIKE MIND <span style={{ color: "#3c3333" }}>
+                                <br /><span>PSYCHOLOGIST</span>
+                            </span>
+                            <br />
+                            <span style={{ fontSize: "0.25em", color: "#000000" }}>
+                                Where Faith Meets Mental Health
+                            </span>
+                        </h1>
+                        <p
+                            className="text-lg mb-8 leading-relaxed"
+                            style={{ color: "#1A3A5A" }} // Darker muted for contrast
+                        >
+                            A Christ-centered community for psychologists integrating biblical wisdom with evidence-based practice for holistic healing and growth.
+                        </p>
+                        <div className="flex justify-center md:justify-start gap-4">
+                            <button
+                                className="px-6 py-3 rounded-full shadow-lg font-semibold transition"
+                                style={{
+                                    backgroundColor: "#5DA8A3",
+                                    color: "#000000",
+                                    boxShadow: "0 4px 15px rgba(93, 168, 163, 0.4)",
+                                }}
+                                onMouseEnter={(e) => (e.target.style.backgroundColor = "#4a8a8a")}
+                                onMouseLeave={(e) => (e.target.style.backgroundColor = "#5DA8A3")}
+                            >
+                                Join the Book Club
+                            </button>
+                            <button
+                                className="border-2 px-6 py-3 rounded-full font-semibold transition"
+                                style={{
+                                    borderColor: "#5DA8A3",
+                                    color: "#5DA8A3",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.backgroundColor = "#5DA8A3";
+                                    e.target.style.color = "#000000";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.backgroundColor = "transparent";
+                                    e.target.style.color = "#5DA8A3";
+                                }}
+                                onClick={() => window.location.href = "/services"}
+                            >
+                                Explore Our Services
+                            </button>
+                        </div>
+                    </div>
+                    <div className="mt-12 md:mt-0 md:w-1/2 flex justify-center">
+                        <img
+                            src={logo}
+                            alt="Community"
+                            className="rounded-3xl shadow-2xl border-4 w-full max-w-md md:max-w-lg"
+                            style={{ borderColor: "#5DA8A366" }}
+                        />
+                    </div>
+                </div>
+            </section>
+            {/* Featured Book */}
+            <section className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+                    <img
+                        src={book}
+                        alt="The Gifts of Imperfection by Brené Brown"
+                        className="w-full md:w-1/2 rounded-2xl shadow-xl border-2"
+                        style={{ borderColor: `${c.accent}4d` }}
+                    />
+                    <div className="md:w-1/2 text-left">
+                        <h2
+                            className="text-3xl font-semibold mb-4"
+                            style={{
+                                fontFamily: "'Alegreya Sans SC', Alegreya Sans",
+                                color: "#185a82",
+                            }}
+                        >
+                            Featured Book: *The Gifts of Imperfection*
+                        </h2>
+                        <h3
+                            className="text-lg font-medium mb-3"
+                            style={{
+                                fontFamily: "'Alegreya Sans', sans-serif",
+                                color: "#3c3333",
+                            }}
+                        >
+                            by Brené Brown
+                        </h3>
+                        <p
+                            className="mb-6 leading-relaxed text-base"
+                            style={{ color: c.accent }}
+                        >
+                            In this powerful guide to wholehearted living, Brené Brown explores
+                            courage, compassion, and connection—showing us how embracing our
+                            imperfections can lead to a more authentic, resilient, and fulfilling
+                            life.
+                        </p>
+
+                        <p
+                            className="italic mb-6 text-sm"
+                            style={{ color: "#555" }}
+                        >
+                            📚 In our Book Club, each book is read and discussed for a period of 3 months — allowing time for reflection, application, and meaningful conversations.
+                        </p>
+
+                        <button
+                            className="px-6 py-3 rounded-full font-semibold shadow-md transition"
+                            style={{
+                                backgroundColor: "#185a82",
+                                color: "#ffffff",
+                                boxShadow: `0 4px 12px ${c.accent}3d`,
+                            }}
+                            onMouseEnter={(e) => (e.target.style.backgroundColor = c.hover)}
+                            onMouseLeave={(e) => (e.target.style.backgroundColor = c.accent)}
+                        >
+                            View This Quarter’s Book
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section className="py-24 text-center px-6 max-w-7xl mx-auto" style={{ backgroundColor: c.section }}>
+                <h2
+                    className="text-3xl font-semibold mb-16"
+                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#ffff" }}
+                >
+                    How Our Community Works
+                </h2>
+                <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                    {[
+                        { step: "Step 1", title: "READ", text: "Engage with curated books blending Christian faith and clinical psychology." },
+                        { step: "Step 2", title: "REFLECT", text: "Journal and discuss using Christ-centered prompts to deepen insight." },
+                        { step: "Step 3", title: "CONNECT", text: "Join live sessions with like-minded psychologists in a supportive, faith-filled space." },
+                    ].map((item, i) => (
+                        <div
+                            key={i}
+                            className="p-8 rounded-xl shadow-lg hover:shadow-xl transition border"
+                            style={{
+                                backgroundColor: c.card,
+                                borderColor: c.accent,
+                                borderWidth: "1px",
+                            }}
+                        >
+                            <h3 className="font-bold mb-3 text-xl" style={{ color: "#185a82" }}>{item.step}</h3>
+                            <h4 className="font-semibold mb-4 text-lg" style={{ color: "#185a82" }}>{item.title}</h4>
+                            <p className="text-base" style={{ color: c.accent }}>{item.text}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Community CTA */}
+            <section className="py-24 text-center" style={{ backgroundColor: "#ffffff" }}>
+                <div className="max-w-5xl mx-auto px-6">
+                    <h2
+                        className="text-3xl font-semibold mb-8"
+                        style={{
+                            fontFamily: "'Alegreya Sans SC', sans-serif",
+                            color: "#185a82",
+                        }}
+                    >
+                        Join a Christ-Centered Community
+                    </h2>
+                    <p
+                        className="max-w-3xl mx-auto text-lg mb-10 leading-relaxed"
+                        style={{ color: c.accent }}
+                    >
+                        Connect with born-again psychologists integrating faith and science. Grow together in wisdom, empathy, and purpose.
+                    </p>
+                    <button
+                        className="px-8 py-3 rounded-full font-semibold shadow-xl transition"
+                        style={{
+                            backgroundColor: "#185a82",
+                            color: "#ffffff",
+                            boxShadow: `0 6px 20px ${c.accent}66`,
+                        }}
+                        onMouseEnter={(e) => (e.target.style.backgroundColor = "#185a82")}
+                        onMouseLeave={(e) => (e.target.style.backgroundColor = "#185a82")}
+                        onClick={() => window.location.href = "/membership"}
+                    >
+                        Become a Member
+                    </button>
+                </div>
+            </section>
+
+            {/* Upcoming Workshops */}
+            <section className="py-24 px-6 text-center max-w-7xl mx-auto" style={{ backgroundColor: "#185a82" }}>
+                <h2
+                    className="text-3xl font-semibold mb-14"
+                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#ffff" }}
+                >
+                    Upcoming Faith & Psychology Workshops
+                </h2>
+                <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
+                    {[
+                        { title: "Integrating Christ in Therapy", date: "March 15–17, 2025", text: "Learn ethical, evidence-based ways to honor clients’ faith in clinical practice." },
+                        { title: "Biblical Resilience Training", date: "April 5–6, 2025", text: "Equip clients with scriptural tools to build lasting mental strength." },
+                        { title: "Mindfulness Through Scripture", date: "April 19–21, 2025", text: "Explore meditative practices rooted in biblical peace and presence." },
+                    ].map((course, i) => (
+                        <div
+                            key={i}
+                            className="p-8 rounded-xl shadow-md hover:shadow-lg transition border"
+                            style={{
+                                backgroundColor: "#ffffff",
+                                borderColor: c.accent,
+                                borderWidth: "1px",
+                            }}
+                        >
+                            <p className="text-sm mb-2" style={{ color: "#185a82" }}>{course.date}</p>
+                            <h4 className="font-semibold mb-4 text-xl" style={{ color: "#185a82" }}>{course.title}</h4>
+                            <p className="mb-6 text-base" style={{ color: c.accent }}>{course.text}</p>
+                            <a href="/services" className="font-semibold text-base hover:underline" style={{ color: "#185a82" }}>
+                                Learn More
+                            </a>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <section className="py-24 px-6 text-center max-w-7xl mx-auto" style={{ backgroundColor: "#ffffff" }}>
+                <h2
+                    className="text-3xl font-semibold mb-12"
+                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#185a82" }}
+                >
+                    Voices from Our Community
+                </h2>
+                <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
+                    {[
+                        { name: "Dr. Sarah Mitchell", location: "Nairobi", text: "This space has renewed my calling. I now integrate Christ’s love into every session with confidence." },
+                        { name: "Dr. James Rodriguez", location: "Uganda", text: "Finally, a community that honors both science and scripture without compromise." },
+                        { name: "Dr. Emily Chen", location: "Nairobi", text: "The discussions here have deepened my faith and sharpened my clinical skills." },
+                    ].map((t, i) => (
+                        <div
+                            key={i}
+                            className="p-8 rounded-xl shadow-md border"
+                            style={{
+                                backgroundColor: "#ffffff",
+                                borderColor: "#185a82",
+                                borderWidth: "2px",
+                            }}
+                        >
+                            <p className="mb-6 text-lg italic" style={{ color: "#6b7280" }}>“{t.text}”</p>
+                            <p className="font-semibold text-xl" style={{ color: "#185a82" }}>{t.name}</p>
+                            <p className="text-sm" style={{ color: "#6b7280" }}>{t.location}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <Footer colors={c} />
+            {/* Floating Donate Button */}
+            <button
+                onClick={() => window.location.href = "/donate"}
+                className="fixed bottom-8 right-8 z-50 px-6 py-3 rounded-full font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
+                style={{
+                    backgroundColor: "#185a82",
+                    color: "#ffffff",
+                    boxShadow: `0 8px 25px #185a8288`,
+                }}
+                aria-label="Donate"
+            >
+                Donate
             </button>
-          </div>
         </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="bg-white py-24 text-center px-6 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-16 text-[#185a82]" style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}>
-          How It Works
-        </h2>
-        <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-          {[
-            {
-              step: "Step 1",
-              title: "READ",
-              text: "Explore thoughtfully chosen books that merge faith and psychology for both professional and personal growth.",
-            },
-            {
-              step: "Step 2",
-              title: "REFLECT",
-              text: "Use reflection prompts and guided discussions to deepen understanding and connect faith with practice.",
-            },
-            {
-              step: "Step 3",
-              title: "CONNECT",
-              text: "Join live conversations with other psychologists who value both evidence and empathy.",
-            },
-          ].map((item, i) => (
-            <div key={i} className="bg-[#eaf6f7] p-8 rounded-xl shadow-md hover:shadow-lg transition">
-              <h3 className="text-[#185a82] font-bold mb-3 text-xl">{item.step}</h3>
-              <h4 className="font-semibold mb-4 text-lg">{item.title}</h4>
-              <p className="text-gray-700 text-base">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Community Section */}
-      <section className="relative overflow-hidden py-24 text-center text-white">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
-            alt="Community"
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-[#185a82]/80"></div>
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-8">Become Part of a Growing Community</h2>
-          <p className="max-w-3xl mx-auto text-lg mb-10 leading-relaxed">
-            Join hundreds of psychologists uniting professional growth with spiritual depth.  
-            Share insights, support one another, and grow together.
-          </p>
-          <button className="bg-white text-[#185a82] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 shadow-lg transition">
-            Become a Member
-          </button>
-        </div>
-      </section>
-
-      {/* Workshops */}
-      <section className="bg-[#f9fafb] py-24 px-6 text-center max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-14 text-[#185a82]" style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}>
-          Upcoming Workshops & Courses
-        </h2>
-        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
-          {[
-            {
-              title: "Integrating Spirituality in Clinical Practice",
-              date: "March 15–17, 2025",
-              text: "A 3-day intensive exploring how to respectfully integrate clients’ faith into therapy sessions.",
-            },
-            {
-              title: "Faith, Resilience & Mental Health",
-              date: "April 5–6, 2025",
-              text: "Learn how faith-based coping mechanisms can strengthen resilience in diverse therapeutic settings.",
-            },
-            {
-              title: "Mindfulness, Meditation & Psychology",
-              date: "April 19–21, 2025",
-              text: "Explore how mindfulness rooted in faith traditions reduces stress and nurtures inner calm.",
-            },
-          ].map((course, i) => (
-            <div key={i} className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition">
-              <p className="text-sm text-[#185a82] mb-2">{course.date}</p>
-              <h4 className="font-semibold mb-4 text-xl text-[#134961]">{course.title}</h4>
-              <p className="text-gray-700 mb-6 text-base">{course.text}</p>
-              <a href="/services" className="text-[#185a82] font-semibold text-base hover:underline">
-                Learn More →
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-white py-24 px-6 text-center max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-12 text-[#185a82]" style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}>
-          What Our Members Say
-        </h2>
-        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
-          {[
-            {
-              name: "Dr. Sarah Mitchell",
-              location: "Clinical Psychologist, New York",
-              text: "This community has transformed how I approach therapy. It reminds me that healing involves both science and spirit.",
-            },
-            {
-              name: "Dr. James Rodriguez",
-              location: "Counseling Psychologist, Texas",
-              text: "A rare space where psychologists share both professional and spiritual journeys in a supportive environment.",
-            },
-            {
-              name: "Dr. Emily Chen",
-              location: "Health Psychologist, California",
-              text: "Each discussion enriches my perspective and connects me with others who value holistic care.",
-            },
-          ].map((t, i) => (
-            <div key={i} className="bg-[#f7fafb] p-8 rounded-xl shadow-md border border-gray-200">
-              <p className="text-gray-700 mb-6 text-lg italic">“{t.text}”</p>
-              <p className="font-semibold text-[#185a82] text-xl">{t.name}</p>
-              <p className="text-sm text-gray-500">{t.location}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
+    );
 }

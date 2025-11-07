@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+import book from "../assests/book.png";
 
 /**
  * BooksAndResources.jsx
@@ -127,27 +128,19 @@ export default function BooksAndResources() {
     return (
         <div
             className="min-h-screen flex flex-col bg-[#f8fafa] text-[#3c3333]"
-            style={{ fontFamily: "'Alegreya Sans', sans-serif" }}
+            style={{ fontFamily: "'Alegreya Sans', Alegreya Sans" }}
         >
             <Navbar />
 
             {/* ✅ HERO SECTION */}
-            <header className="relative w-full text-center text-white overflow-hidden">
-                <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage:
-                            "url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80')",
-                    }}
-                />
-                <div className="absolute inset-0 bg-[#185a82]/80 backdrop-blur-sm" />
+            <header className="pt-28 pb-20 text-center bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa]">
 
                 <div className="relative z-10 pt-40 pb-24 px-6 max-w-4xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7 }}
-                        className="text-4xl md:text-5xl font-semibold mb-4 leading-snug"
+                        className="text-4xl md:text-5xl text-[#3c3333] font-semibold mb-4 leading-snug"
                     >
                         Books & Resources for Mindful Growth and Healing
                     </motion.h1>
@@ -156,7 +149,7 @@ export default function BooksAndResources() {
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.7 }}
-                        className="text-lg opacity-95 mb-8"
+                        className="text-lg opacity-95 mb-8 text-[#000000]"
                     >
                         Explore resources curated for psychologists, counselors, and seekers
                         — where compassion meets knowledge.
@@ -194,7 +187,7 @@ export default function BooksAndResources() {
                             >
                                 <div className="w-full md:w-56 h-72 rounded-lg overflow-hidden flex-shrink-0">
                                     <img
-                                        src={featured.cover}
+                                        src={book}
                                         alt={featured.title}
                                         className="w-full h-full object-cover"
                                     />
@@ -203,18 +196,23 @@ export default function BooksAndResources() {
                                     <span className="inline-block text-xs bg-[#185a82] text-white px-3 py-1 rounded-full mb-3">
                                         Featured Book
                                     </span>
+
                                     <h2 className="text-2xl font-semibold text-[#185a82] mb-2">
-                                        {featured.title}
+                                        The Gifts of Imperfection
                                     </h2>
+
                                     <p className="text-sm text-[#3c3333]/80 mb-4">
-                                        {featured.description}
+                                        In this inspiring guide, Brené Brown explores the power of courage,
+                                        compassion, and connection—inviting us to embrace our imperfections
+                                        and live wholeheartedly. A deeply reflective read that transforms
+                                        how we see ourselves and others.
                                     </p>
+
                                     <div className="flex flex-wrap items-center gap-3 text-sm text-[#3c3333]/70">
-                                        <span>by {featured.author}</span>
-                                        <span className="text-[#185a82] font-semibold">
-                                            {featured.price}
-                                        </span>
+                                        <span>by Brené Brown</span>
+                                        <span className="text-[#185a82] font-semibold">$14.99</span>
                                     </div>
+
                                     <div className="mt-5 flex gap-3">
                                         <button className="bg-[#185a82] text-white px-5 py-2 rounded-full text-sm hover:bg-[#134961] transition">
                                             Join Discussion
@@ -223,6 +221,11 @@ export default function BooksAndResources() {
                                             Add to Reading List
                                         </button>
                                     </div>
+
+                                    <p className="mt-4 text-xs italic text-[#3c3333]/70">
+                                        📚 Each book in our club is read and discussed over a 3-month period
+                                        — giving members time to reflect, apply insights, and grow together.
+                                    </p>
                                 </div>
                             </motion.div>
                         </section>

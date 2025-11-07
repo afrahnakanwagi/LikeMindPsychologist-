@@ -7,7 +7,7 @@ export default function AboutUs() {
   return (
     <div style={{ fontFamily: "'Alegreya Sans', sans-serif" }}>
       <Navbar />
-
+      <br /><br /><br />
       {/* Hero Section */}
       <section
         className="relative bg-cover bg-center bg-no-repeat text-white py-32 px-6"
@@ -16,15 +16,18 @@ export default function AboutUs() {
             "url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1920&q=80')",
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        {/* Gray-Cyan Overlay */}
+        <div className="absolute inset-0 bg-[#9dd5d6]/100 mix-blend-multiply"></div>
+
         <div className="relative z-10 text-center max-w-3xl mx-auto">
           <h1
             className="text-5xl font-bold mb-4"
-            style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+            style={{ fontFamily: "'Alegreya Sans SC',Alegreya Sans", color: "#3c3333" }}
           >
             About Like Mind Psychologist
           </h1>
-          <p className="text-lg italic text-gray-200">
+          <p className="text-lg italic text-gray-100"
+          style={{color:"#000000"}}>
             “Faith and Psychology in Harmony — Cultivating Excellence, Connection, and Purpose.”
           </p>
         </div>
@@ -62,14 +65,15 @@ export default function AboutUs() {
       </section>
 
       {/* Mission Section */}
-      <section className="bg-[#f0f9fa] py-20 text-center px-6">
+      <section className="bg-[#185a82] py-20 text-center px-6">
         <h2
-          className="text-3xl font-semibold mb-6 text-[#185a82]"
-          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+          className="text-3xl font-semibold mb-6 text-[#ffff]"
+          style={{ fontFamily: "'Alegreya Sans SC', Alegreya Sans" }}
         >
           Our Mission
         </h2>
-        <p className="max-w-3xl mx-auto mb-10 text-gray-600">
+        <p className="max-w-3xl mx-auto mb-10"
+        style={{color:"#000000"}}>
           To empower licensed psychologists to achieve clinical excellence while
           integrating faith and values into practice — nurturing both
           professional and spiritual growth.
@@ -105,7 +109,7 @@ export default function AboutUs() {
               className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105"
             >
               {icon}
-              <h3 className="font-semibold mb-2 text-lg">{title}</h3>
+              <h3 className="font-semibold mb-2 text-lg" style={{color:"#185a82"}}>{title}</h3>
               <p className="text-sm text-gray-600">{desc}</p>
             </div>
           ))}
@@ -116,7 +120,7 @@ export default function AboutUs() {
       <section className="max-w-6xl mx-auto py-20 px-6 text-center">
         <h2
           className="text-3xl font-semibold text-[#185a82] mb-10"
-          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+          style={{ fontFamily: "'Alegreya Sans SC', Alegreya Sans" }}
         >
           What We Offer
         </h2>
@@ -168,7 +172,7 @@ export default function AboutUs() {
           className="text-3xl font-semibold mb-10 text-[#185a82]"
           style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
         >
-          Meet Our Leadership
+          Meet Our People
         </h2>
         <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {[
@@ -210,18 +214,18 @@ export default function AboutUs() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 text-center bg-[#185a82] text-white">
+      <section className="py-20 text-center bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa] text-white">
         <h2
           className="text-3xl font-semibold mb-4"
-          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+          style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color:"#3c3333" }}
         >
           Join Our Faith-Based Psychology Network
         </h2>
-        <p className="max-w-2xl mx-auto mb-6 text-gray-200">
+        <p className="max-w-2xl mx-auto mb-6 text-[#000000]">
           Be part of a transformative movement — where faith meets clinical
           excellence and community thrives.
         </p>
-        <button className="bg-white text-[#185a82] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+        <button className="bg-[#185a82] text-[#ffff] px-8 py-3 rounded-full font-semibold hover:bg-[#9dd5d6] transition hover:text-[#3c3333]">
           Become a Member
         </button>
       </section>
