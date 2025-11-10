@@ -208,7 +208,7 @@ export default function AboutUs() {
           Our Mission
         </h2>
         <p className="max-w-3xl mx-auto mb-10"
-        style={{color:"#000000"}}>
+        style={{color:"#ffff"}}>
           To empower licensed psychologists to achieve clinical excellence while
           integrating faith and values into practice — nurturing both
           professional and spiritual growth.

@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
+
 
 // === Impact Section ===
 function ImpactSection() {
@@ -68,20 +70,35 @@ const FadeInWhenVisible = ({ children, delay = 0 }) => {
 
 // === MAIN COMPONENT ===
 export default function Services() {
+  const navigate = useNavigate();
+
+  const handleCardClick = (title) => {
+    const lowerTitle = title.toLowerCase();
+    if (
+      lowerTitle.includes("group therapy") ||
+      lowerTitle.includes("online resources")
+    ) {
+      navigate("/education");
+    }
+  };
+
   return (
     <div className="bg-gradient-to-b from-[#e6f4f5] via-white to-[#f8fbfc] text-[#3c3333] font-['Alegreya_Sans'] overflow-hidden">
       <Navbar />
 
       {/* ================= HERO SECTION ================= */}
       <section className="relative overflow-hidden">
-        {/* Background image */}
+        {/* Background layers */}
         <div className="absolute inset-0">
+          {/* Background image */}
           <img
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
             alt="Therapist session background"
             className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-[#e6f4f5]/70 to-white"></div>
+
+          {/* Gradient overlay ON TOP */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa] opacity-90"></div>
         </div>
 
         {/* Hero content */}
@@ -137,31 +154,36 @@ export default function Services() {
       {/* ================= CORE SERVICES ================= */}
       <Section
         title="Our Core Services"
-        subtitle="Comprehensive care designed for your mind, heart, and soul."
+        subtitle="Comprehensive care designed to restore balance, faith, and emotional well-being."
+        onCardClick={handleCardClick}
         cards={[
           {
-            title: "Book Club Membership",
-            desc: "Join monthly curated book sessions that inspire emotional and spiritual growth.",
+            title: "Overview of Psychotherapy Services",
+            desc: "Individual, couples, and family therapy sessions tailored to your unique emotional and relational needs.",
           },
           {
-            title: "Wellness Consultations",
-            desc: "Personal one-on-one guidance from licensed psychologists for holistic healing.",
+            title: "Group Therapy / Peer-to-Peer & Workshops",
+            desc: "Interactive group sessions and workshops for shared healing, growth, and skill-building.",
           },
           {
-            title: "Group Therapy Circles",
-            desc: "Participate in shared healing experiences through group discussions and reflection.",
+            title: "Mentorship and Coaching",
+            desc: "Personal and professional mentorship programs that integrate psychology, leadership, and spirituality.",
           },
           {
-            title: "Online Courses & Workshops",
-            desc: "Explore self-paced and live sessions on mindfulness, faith, and psychology.",
+            title: "Curriculum Development on Mental Health and Faith",
+            desc: "Custom-designed educational content and frameworks merging faith-based values with mental wellness principles.",
           },
           {
-            title: "Resource Library",
-            desc: "Access ebooks, guided meditations, and learning tools for mental wellness.",
+            title: "Online Resources (Articles, Podcasts, Videos)",
+            desc: "Access digital tools for ongoing self-improvement — curated resources for learning and reflection.",
           },
           {
             title: "Community Events",
-            desc: "Connect with others through healing retreats, gatherings, and spiritual workshops.",
+            desc: "Join our mental health programs, conferences, and retreats that inspire deeper connection and healing.",
+          },
+          {
+            title: "Pricing and Packages",
+            desc: "Explore flexible options designed to fit your personal or organizational wellness goals.",
           },
         ]}
       />
@@ -178,7 +200,9 @@ export default function Services() {
 
 // --------------------------- Reusable Components ---------------------------
 
-function Section({ title, subtitle, cards, bg }) {
+// --------------------------- Reusable Components ---------------------------
+
+function Section({ title, subtitle, cards, bg, onCardClick }) {
   return (
     <section
       className={`py-20 bg-gradient-to-b ${bg || "from-white to-[#f7fafb]"}`}
@@ -190,12 +214,18 @@ function Section({ title, subtitle, cards, bg }) {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((c, i) => (
             <FadeInWhenVisible key={i} delay={i * 0.1}>
-              <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                onClick={() => onCardClick && onCardClick(c.title)}
+                className="bg-white cursor-pointer rounded-2xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition"
+              >
                 <h3 className="text-lg font-semibold text-[#185a82] mb-3">
                   {c.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{c.desc}</p>
-              </div>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {c.desc}
+                </p>
+              </motion.div>
             </FadeInWhenVisible>
           ))}
         </div>
@@ -310,7 +340,7 @@ function ServicePackages() {
 
 function CallToAction() {
   return (
-    <section className="text-center py-20 bg-white">
+    <section className="text-center py-20 bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa]">
       <h2 className="text-3xl font-bold text-[#185a82] mb-4">
         Start Your Wellness Journey Today
       </h2>

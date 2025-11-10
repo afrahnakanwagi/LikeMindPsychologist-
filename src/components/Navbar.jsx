@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assests/logo.png";
+// #EFDECD
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Navbar() {
         {/* LOGO – BIGGER, WITH WHITE BACKGROUND AND ROUND BORDER */}
         <div className="flex items-center">
           <div
-            className="flex items-center justify-center rounded-full bg-[#EFDECD]"
+            className="flex items-center justify-center rounded-full bg-[#9dd5d6]"
             style={{
               width: "130px",
               height: "130px",
@@ -47,9 +48,9 @@ export default function Navbar() {
           <li><a href="/about" className="hover:text-[#185a82] transition">About Us</a></li>
           <li><a href="/services" className="hover:text-[#185a82] transition">Our Services</a></li>
           <li><a href="/books-resources" className="hover:text-[#185a82] transition">Books & Resources</a></li>
-          <li><a href="/education" className="hover:text-[#185a82] transition">Education</a></li>
+          {/* <li><a href="/education" className="hover:text-[#185a82] transition">Education</a></li> */}
           <li><a href="/membership" className="hover:text-[#185a82] transition">Membership</a></li>
-          <li><a href="/shop" className="hover:text-[#185a82] transition">Shop</a></li>
+          <li><a href="/shop" className="hover:text-[#185a82] transition">Ecommerce</a></li>
           <li><a href="/blog" className="hover:text-[#185a82] transition">Blog</a></li>
           <li><a href="/contact" className="hover:text-[#185a82] transition">Contact</a></li>
         </ul>
@@ -114,9 +115,9 @@ export default function Navbar() {
           <li><a href="/about" className="block hover:text-[#185a82]">About Us</a></li>
           <li><a href="/services" className="block hover:text-[#185a82]">Our Services</a></li>
           <li><a href="/books-resources" className="block hover:text-[#185a82]">Books & Resources</a></li>
-          <li><a href="/education" className="block hover:text-[#185a82]">Education</a></li>
+          {/* <li><a href="/education" className="block hover:text-[#185a82]">Education</a></li> */}
           <li><a href="/membership" className="block hover:text-[#185a82]">Membership</a></li>
-          <li><a href="/shop" className="block hover:text-[#185a82]">Shop</a></li>
+          <li><a href="/shop" className="block hover:text-[#185a82]">Ecommerce</a></li>
           <li><a href="/blog" className="block hover:text-[#185a82]">Blog</a></li>
           <li><a href="/contact" className="block hover:text-[#185a82]">Contact</a></li>
           <li>

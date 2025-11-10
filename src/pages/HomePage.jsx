@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SubscriptionPopup from "../components/SubscriptionPopup";
 import logo from "../assests/logo.png";
 import book from "../assests/book.png";
 
@@ -343,6 +344,9 @@ export default function HomePage() {
             </section>
 
             <Footer colors={c} />
+
+            <SubscriptionPopup />
+
             {/* Floating Donate Button */}
             <button
                 onClick={() => window.location.href = "/donate"}
