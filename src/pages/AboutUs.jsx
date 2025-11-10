@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { FaStar, FaShieldAlt, FaUsers, FaCross } from "react-icons/fa";
+import { FaStar, FaShieldAlt, FaUsers, FaCross, FaHeart, FaBook, FaHome } from "react-icons/fa";
+// To use image from assets folder, uncomment the line below and update the img src
+import founder from "../assests/founder.png";
 
 export default function AboutUs() {
   return (
@@ -16,8 +18,8 @@ export default function AboutUs() {
             "url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1920&q=80')",
         }}
       >
-        {/* Gray-Cyan Overlay */}
-        <div className="absolute inset-0 bg-[#9dd5d6]/100 mix-blend-multiply"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#9dd5d6]/90 via-[#a8dadc]/80 to-[#f9fafa]/90"></div>
 
         <div className="relative z-10 text-center max-w-3xl mx-auto">
           <h1
@@ -63,6 +65,139 @@ export default function AboutUs() {
           />
         </div>
       </section>
+
+            {/* Meet Our Founder Section */}
+      <section className="py-20 px-6" style={{ backgroundColor: "#f8fafa", minHeight: "600px" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2
+              className="text-4xl font-bold mb-4 text-[#185a82]"
+              style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+            >
+              Meet Our Founder
+            </h2>
+            <div className="w-24 h-1 bg-[#9dd5d6] mx-auto rounded-full mb-3"></div>
+            <p className="text-base text-[#185a82] font-semibold">Ugandan Mental Health Professional</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-start bg-white rounded-2xl shadow-2xl p-8 md:p-12" style={{ border: "2px solid #9dd5d6" }}>
+            {/* Founder Image */}
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                {/* Image path: Place rachaal.jpg in public folder, or import from assets and use src={rachaalImage} */}
+                <img
+                  src={founder}
+                  alt="Racheal Kisakye - Founder"
+                  className="w-full h-[500px] object-cover"
+                  onError={(e) => {
+                    e.target.src = {founder};
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#185a82]/20 to-transparent"></div>
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#9dd5d6]/30 rounded-full -z-10"></div>
+            </div>
+
+            {/* Founder Bio */}
+            <div className="space-y-6">
+              <div>
+                <h3
+                  className="text-3xl font-bold mb-2 text-[#185a82]"
+                  style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
+                >
+                  Racheal Kisakye
+                </h3>
+                <p className="text-lg text-[#5DA8A3] font-semibold mb-4">
+                  Founder & Mental Health Professional
+                </p>
+                <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+                  <span className="px-3 py-1 bg-[#9dd5d6]/20 rounded-full">10+ Years Experience</span>
+                  <span className="px-3 py-1 bg-[#9dd5d6]/20 rounded-full">Clinical Expert</span>
+                </div>
+              </div>
+
+              <div className="space-y-5 text-gray-700 leading-relaxed">
+                <p className="text-base">
+                  Racheal Kisakye is a dedicated mental health professional with over 10 years of experience in program development, implementation, and clinical services. She integrates mental health care across diverse settings, including clinical, humanitarian, corporate, and faith-based environments, using various therapeutic interventions to provide holistic care to vulnerable communities.
+                </p>
+                <p className="text-base">
+                  Guided by her faith, Racheal is passionate about creating safe spaces for healing and growth, aiming to inspire courage, healing, and wholeness. As a wife, mother of two, and born-again Christian, she prioritizes her family's well-being, enjoys songwriting and journaling, and offers remote mental health services from her home office, making a positive impact in her community and beyond.
+                </p>
+              </div>
+
+              {/* Personal Touchpoints */}
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+                <div className="flex items-start gap-3">
+                  <FaHeart className="text-[#185a82] mt-1 text-xl" />
+                  <div>
+                    <p className="font-semibold text-[#185a82] text-sm">Family First</p>
+                    <p className="text-xs text-gray-600">Wife & Mother of Two</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FaCross className="text-[#185a82] mt-1 text-xl" />
+                  <div>
+                    <p className="font-semibold text-[#185a82] text-sm">Faith-Driven</p>
+                    <p className="text-xs text-gray-600">Born-Again Christian</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FaBook className="text-[#185a82] mt-1 text-xl" />
+                  <div>
+                    <p className="font-semibold text-[#185a82] text-sm">Creative</p>
+                    <p className="text-xs text-gray-600">Songwriter & Journalist</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FaHome className="text-[#185a82] mt-1 text-xl" />
+                  <div>
+                    <p className="font-semibold text-[#185a82] text-sm">Accessible</p>
+                    <p className="text-xs text-gray-600">Remote Services Available</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <div className="bg-[#9dd5d6]/10 rounded-xl p-6 border-l-4 border-[#185a82] mt-6">
+                <p className="text-gray-700 italic text-lg">
+                  "Creating safe spaces for healing and growth, inspiring courage, healing, and wholeness."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Expertise Highlights */}
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {[
+              {
+                title: "Program Development",
+                desc: "10+ years designing and implementing mental health programs",
+                icon: <FaUsers className="text-3xl text-[#185a82]" />,
+              },
+              {
+                title: "Holistic Care",
+                desc: "Integrating faith with evidence-based therapeutic interventions",
+                icon: <FaHeart className="text-3xl text-[#185a82]" />,
+              },
+              {
+                title: "Diverse Settings",
+                desc: "Experience across clinical, humanitarian, corporate, and faith-based environments",
+                icon: <FaShieldAlt className="text-3xl text-[#185a82]" />,
+              },
+            ].map(({ title, desc, icon }, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-xl shadow-md p-6 border border-[#9dd5d6]/20 hover:shadow-lg transition"
+              >
+                <div className="mb-4">{icon}</div>
+                <h4 className="font-semibold text-lg text-[#185a82] mb-2">{title}</h4>
+                <p className="text-sm text-gray-600">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Mission Section */}
       <section className="bg-[#185a82] py-20 text-center px-6">
@@ -166,53 +301,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="bg-[#f9fafb] py-20 px-6 text-center">
-        <h2
-          className="text-3xl font-semibold mb-10 text-[#185a82]"
-          style={{ fontFamily: "'Alegreya Sans SC', sans-serif" }}
-        >
-          Meet Our People
-        </h2>
-        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {[
-            {
-              name: "Dr. Sarah Mitchell",
-              role: "Founder & Clinical Director",
-              img: "https://images.unsplash.com/photo-1614289371518-7c968ccdc877?auto=format&fit=crop&w=800&q=80",
-            },
-            {
-              name: "Dr. James Chen",
-              role: "Education Coordinator",
-              img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
-            },
-            {
-              name: "Dr. Rebecca Thompson",
-              role: "Community Manager",
-              img: "https://images.unsplash.com/photo-1603415526960-f7e0328da6e3?auto=format&fit=crop&w=800&q=80",
-            },
-            {
-              name: "Dr. Michael Rodriguez",
-              role: "Research Director",
-              img: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=800&q=80",
-            },
-          ].map(({ name, role, img }, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
-            >
-              <img src={img} alt={name} className="h-56 w-full object-cover" />
-              <div className="p-4">
-                <h3 className="font-semibold text-lg text-[#185a82] mb-1">
-                  {name}
-                </h3>
-                <p className="text-sm italic text-gray-500">{role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Call to Action */}
       <section className="py-20 text-center bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa] text-white">
         <h2
@@ -231,6 +319,6 @@ export default function AboutUs() {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>
+  );
 }
