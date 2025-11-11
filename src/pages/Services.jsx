@@ -255,7 +255,7 @@ function Testimonials() {
 
   return (
     <section className="py-20 max-w-6xl mx-auto px-6 text-center">
-      <h2 className="text-3xl font-bold text-[#185a82] mb-10">
+      <h2 className="text-3xl font-bold text-[#3c3333] mb-10">
         What Our Clients Say
       </h2>
       <div className="grid md:grid-cols-3 gap-8">
@@ -310,7 +310,7 @@ function ServicePackages() {
   return (
     <section className="bg-[#f5fbfb] py-20 text-center">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-[#185a82] mb-10">
+        <h2 className="text-3xl font-bold text-[#3c3333] mb-10">
           Service Packages
         </h2>
         <div className="grid md:grid-cols-3 gap-8">

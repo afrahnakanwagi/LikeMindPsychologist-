@@ -1,121 +1,99 @@
+// src/pages/Blog.jsx
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Calendar, User, ArrowRight, Filter, X } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-// import logo from '../assests/logo.png';
+import book from '../assests/book.png';
 
 export default function Blog() {
-  // Sample articles data
+  // === MOCK LATEST ARTICLES: Ugandan Authors (6 entries, recent 2025 dates) ===
   const articlesData = [
     {
       id: 1,
-      title: "Mindfulness in Psychotherapy: A Review of Recent Publications",
+      title: "Healing Through Storytelling: A Review of 'Kintu' by Jennifer Nansubuga Makumbi",
       category: "Book Reviews",
-      excerpt: "An in-depth analysis of the latest publications on integrating mindfulness practices into psychotherapy settings with evidence-based outcomes.",
-      author: "Dr. Sarah Miller",
-      date: "March 15, 2025",
-      readTime: "8 min read"
-    },
-    {
-      id: 2,
-      title: "Latest in Neuroscience: Neuroplasticity and Trauma Recovery",
-      category: "Research Updates",
-      excerpt: "Examining groundbreaking research on how the brain recovers and adapts following trauma, with implications for therapeutic approaches.",
-      author: "Dr. Emily Rodriguez",
-      date: "March 10, 2025",
-      readTime: "10 min read"
-    },
-    {
-      id: 3,
-      title: "Continuing Education: Digital Therapeutics in Modern Practice",
-      category: "CE Credits",
-      excerpt: "Earn CE credits while exploring the evolving role of therapy apps and telepsychology platforms in contemporary clinical practice.",
-      author: "Dr. Michael Chen",
-      date: "March 5, 2025",
-      readTime: "12 min read"
-    },
-    {
-      id: 4,
-      title: "Managing Countertransference: Professional Development Strategies",
-      category: "Professional Development",
-      excerpt: "Essential strategies for identifying and managing countertransference to maintain therapeutic effectiveness and professional boundaries.",
-      author: "Dr. Jennifer Adams",
-      date: "March 1, 2025",
-      readTime: "7 min read"
-    },
-    {
-      id: 5,
-      title: "Attachment Theory Revisited: Contemporary Applications and Insights",
-      category: "Research Updates",
-      excerpt: "Modern perspectives on attachment theory and how these insights are influencing therapeutic approaches and understanding of adult relationships.",
-      author: "Dr. David Kim",
-      date: "February 25, 2025",
+      excerpt: "How ancestral narratives in Uganda’s first English novel inform trauma recovery and collective identity in therapy.",
+      author: "Dr. Aisha Nakato",
+      date: "November 8, 2025",
       readTime: "9 min read"
     },
     {
-      id: 6,
-      title: "Evidence-Based Interventions for Anxiety Disorders: A Meta-Analysis",
+      id: 2,
+      title: "Resilience in Post-Conflict Uganda: Insights from 'Abyssinian Chronicles'",
       category: "Research Updates",
-      excerpt: "Comprehensive analysis of current evidence-based interventions for treating various anxiety disorders including effectiveness and clinical applications.",
-      author: "Dr. Amanda Foster",
-      date: "February 20, 2025",
+      excerpt: "Moses Isegawa’s epic reveals family systems and psychological survival during the Amin era — implications for modern practice.",
+      author: "Prof. Joseph Kizza",
+      date: "November 5, 2025",
       readTime: "11 min read"
     },
     {
-      id: 7,
-      title: "Ethical Considerations in Telepsychology Practice",
-      category: "Ethics & Standards",
-      excerpt: "Navigate the ethical complexities of remote therapy delivery while maintaining professional standards and client confidentiality.",
-      author: "Dr. Robert Thompson",
-      date: "February 15, 2025",
-      readTime: "6 min read"
+      id: 3,
+      title: "Spiritual Coping in Ugandan Women: Lessons from Doreen Baingana’s Short Stories",
+      category: "Clinical Practice",
+      excerpt: "Faith-based resilience in 'The Official Guide to the Pearl of Africa' and its use in culturally sensitive therapy.",
+      author: "Dr. Ruth Namubiru",
+      date: "November 1, 2025",
+      readTime: "7 min read"
     },
     {
-      id: 8,
-      title: "Group Therapy Dynamics: Advanced Facilitation Techniques",
-      category: "Clinical Practice",
-      excerpt: "Master advanced facilitation skills for managing complex group dynamics and maximizing therapeutic outcomes in group settings.",
-      author: "Dr. Lisa Martinez",
-      date: "February 10, 2025",
+      id: 4,
+      title: "Intergenerational Trauma in 'Tropical Fish' by Doreen Baingana",
+      category: "Book Reviews",
+      excerpt: "A clinical lens on how childhood experiences echo into adulthood — applications in family therapy.",
+      author: "Ms. Grace Atim",
+      date: "October 28, 2025",
+      readTime: "8 min read"
+    },
+    {
+      id: 5,
+      title: "Post-Colonial Identity in 'The Invisible Weevil' by Mary Karooro Okurut",
+      category: "Research Updates",
+      excerpt: "Exploring self-worth and mental health in post-independence Uganda through literary analysis.",
+      author: "Dr. Samuel Mugarura",
+      date: "October 22, 2025",
       readTime: "10 min read"
     },
     {
-      id: 9,
-      title: "Trauma-Informed Care: Building Resilient Therapeutic Relationships",
+      id: 6,
+      title: "Grief and Community Healing in 'Song of Lawino' by Okot p'Bitek",
       category: "Clinical Practice",
-      excerpt: "Essential principles of trauma-informed care and their application in creating safe, supportive therapeutic environments.",
-      author: "Dr. James Wilson",
-      date: "February 5, 2025",
-      readTime: "8 min read"
+      excerpt: "Using oral poetry traditions to facilitate group therapy and cultural mourning practices.",
+      author: "Ms. Lillian Tibatemwa",
+      date: "October 18, 2025",
+      readTime: "6 min read"
     }
   ];
 
   const categories = [
     { name: "All Articles", value: "all", count: articlesData.length },
-    { name: "Clinical Practice", value: "Clinical Practice", count: 42 },
-    { name: "Book Reviews", value: "Book Reviews", count: 18 },
-    { name: "Research Updates", value: "Research Updates", count: 35 },
-    { name: "CE Credits", value: "CE Credits", count: 24 },
-    { name: "Professional Development", value: "Professional Development", count: 31 },
-    { name: "Ethics & Standards", value: "Ethics & Standards", count: 15 }
+    { name: "Book Reviews", value: "Book Reviews", count: 2 },
+    { name: "Research Updates", value: "Research Updates", count: 2 },
+    { name: "Clinical Practice", value: "Clinical Practice", count: 2 },
   ];
 
-  const popularPosts = [
+  // === BOOK CLUB: The Gifts of Imperfection (3-Month Journey) ===
+  const bookClubLetters = [
     {
       id: 1,
-      title: "The Complete Guide to Cognitive Behavioral Therapy Techniques",
-      date: "February 15, 2025"
+      title: "January Letter: Embracing Vulnerability – Week 1 Reflections",
+      date: "January 15, 2025",
+      author: "Sarah K., Licensed Psychologist, Kampala",
+      excerpt: "Starting 'The Gifts of Imperfection' felt like stepping into a mirror..."
     },
     {
       id: 2,
-      title: "Understanding the DSM-5: Updates and Clinical Implications",
-      date: "February 8, 2025"
+      title: "February Letter: Letting Go of Perfectionism – A Therapist's Journey",
+      date: "February 12, 2025",
+      author: "Dr. Mark L., Clinical Supervisor, Gulu",
+      excerpt: "This month, I confronted my own 'hustle for worthiness' in supervision..."
     },
     {
       id: 3,
-      title: "Building a Thriving Private Practice: Business Essentials",
-      date: "January 28, 2025"
+      title: "March Letter: Cultivating Self-Compassion – Final Reflections",
+      date: "March 10, 2025",
+      author: "Esther M., Counseling Psychologist, Mbarara",
+      excerpt: "As we close the 3-month journey, I now integrate self-compassion into every session..."
     }
   ];
 
@@ -138,8 +116,7 @@ export default function Blog() {
       filtered = filtered.filter(article =>
         article.title.toLowerCase().includes(query) ||
         article.excerpt.toLowerCase().includes(query) ||
-        article.author.toLowerCase().includes(query) ||
-        article.category.toLowerCase().includes(query)
+        article.author.toLowerCase().includes(query)
       );
     }
 
@@ -168,10 +145,9 @@ export default function Blog() {
   return (
     <div className="pt-0 bg-gradient-to-b from-[#e6f4f5] via-white to-[#f7fafb] font-['Alegreya_Sans'] text-gray-800 overflow-hidden">
       <Navbar />
-
+  <br /><br />
       {/* ------------------ HERO SECTION ------------------ */}
-      <section className="relative overflow-hidden">
-        {/* Background image */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa]">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1600&q=80"
@@ -181,7 +157,6 @@ export default function Blog() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-[#e6f4f5]/70 to-white"></div>
         </div>
 
-        {/* Hero content */}
         <div className="relative z-10 max-w-6xl mx-auto px-6 pt-40 pb-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -189,7 +164,7 @@ export default function Blog() {
             transition={{ duration: 1 }}
           >
             <h1 className="text-4xl md:text-5xl font-extrabold text-[#185a82] mb-6 leading-tight">
-              Blog & <span className="text-[#1c8ca0]">Clinical Reflections</span>
+              OUR <span className="text-[#1c8ca0]">BLOG</span>
             </h1>
             <p className="text-gray-700 text-lg mb-8 leading-relaxed max-w-3xl mx-auto">
               Evidence-based insights, professional development, and clinical wisdom for licensed psychologists committed to excellence in practice.
@@ -228,7 +203,6 @@ export default function Blog() {
           transition={{ duration: 0.6 }}
           className="bg-white rounded-2xl shadow-md p-6 border border-gray-100"
         >
-          {/* Search Bar */}
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -258,7 +232,6 @@ export default function Blog() {
             </motion.button>
           </div>
 
-          {/* Filter Tags */}
           <div className={`flex flex-wrap gap-3 ${showMobileFilters ? 'block' : 'hidden md:flex'}`}>
             {categories.map((category) => (
               <motion.button
@@ -283,7 +256,7 @@ export default function Blog() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Articles Section */}
           <div className="lg:col-span-2">
-            {/* Featured Article */}
+            {/* === FEATURED: Gifts of Imperfection Book Club (AZURE THEME) === */}
             <motion.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -291,24 +264,34 @@ export default function Blog() {
               whileHover={{ scale: 1.02 }}
               className="bg-white rounded-2xl shadow-md overflow-hidden mb-10 border border-gray-100 hover:shadow-xl transition"
             >
-              <div className="h-64 md:h-96 bg-gradient-to-br from-[#e6f4f5] via-[#d4e9ed] to-[#c8e4e9] flex items-center justify-center">
-                <span className="text-[#185a82] text-xl font-semibold">Featured Article</span>
+              <div className="h-64 md:h-96 bg-gradient-to-br from-[#0d6efd] via-[#0d6efd]/90 to-[#0d6efd]/70 relative overflow-hidden">
+                <img
+                  src={book}
+                  alt="The Gifts of Imperfection by Brené Brown"
+                  className="w-full h-full object-cover opacity-80"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                  <span className="inline-block bg-[#185a82] text-white px-4 py-1 rounded-full text-sm font-medium mb-3">
+                    Book Club Selection
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                    The Gifts of Imperfection
+                  </h2>
+                  <p className="text-lg font-medium">by Brené Brown</p>
+                </div>
               </div>
               <div className="p-6 md:p-8">
-                <span className="inline-block bg-[#185a82] text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
-                  Clinical Practice
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#185a82] mb-4">
-                  The Art of Therapeutic Alliance: Building Trust in the Modern Clinical Setting
-                </h2>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  Explore evidence-based strategies for developing and maintaining strong therapeutic alliances with clients across diverse populations. This comprehensive guide examines contemporary research on trust-building techniques and their impact on treatment outcomes across various therapeutic modalities.
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  <strong>3-Month Book Club Journey (Jan–Mar 2025)</strong><br />
+                  This quarter, our community is diving deep into Brené Brown’s transformative work on courage, compassion, and connection. 
+                  Each month, members share personal and professional reflections on embracing imperfection in therapy and life.
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#185a82] text-white rounded-full hover:bg-[#134961] transition font-medium"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#185a82] text-white rounded-full hover:bg-[#0b5ed7] transition font-medium"
                 >
-                  Read Full Article
+                  Join the Discussion
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </div>
@@ -330,7 +313,7 @@ export default function Blog() {
                       className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition border border-gray-100 cursor-pointer"
                     >
                       <div className="h-48 bg-gradient-to-br from-[#e6f4f5] via-[#d4e9ed] to-[#c8e4e9] flex items-center justify-center">
-                        <span className="text-[#185a82] font-medium">Article Image</span>
+                        <span className="text-[#185a82] font-medium">Ugandan Voices</span>
                       </div>
                       <div className="p-6">
                         <span className="inline-block bg-[#e6f4f5] text-[#185a82] px-3 py-1 rounded-full text-xs font-medium mb-3">
@@ -438,32 +421,42 @@ export default function Blog() {
               </div>
             </motion.div>
 
-            {/* Popular Posts */}
+            {/* === BOOK CLUB LETTERS (AZURE ACCENTS) === */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-white rounded-2xl shadow-md p-6 border border-gray-100"
             >
-              <h3 className="text-xl font-bold text-[#185a82] mb-4">Popular Posts</h3>
+              <h3 className="text-xl font-bold text-[#185a82] mb-4">Book Club Letters</h3>
               <div className="space-y-4">
-                {popularPosts.map((post) => (
+                {bookClubLetters.map((letter) => (
                   <div
-                    key={post.id}
-                    className="flex gap-4 pb-4 border-b border-gray-100 last:border-0 last:pb-0 cursor-pointer hover:bg-[#f7fafb] p-2 rounded-xl transition-colors"
+                    key={letter.id}
+                    className="pb-4 border-b border-gray-100 last:border-0 last:pb-0 cursor-pointer hover:bg-[#f7fafb] p-2 rounded-xl transition-colors"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 bg-[#185a82] text-white rounded-full flex items-center justify-center font-bold">
-                      {post.id}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-[#185a82] mb-1 text-sm leading-tight hover:text-[#1c8ca0] transition-colors">
-                        {post.title}
-                      </h4>
-                      <p className="text-xs text-gray-500">{post.date}</p>
+                    <div className="flex items-start gap-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#185a82] to-[#185a82] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                        {letter.id}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-[#185a82] mb-1 text-sm leading-tight hover:text-[#0d6efd] transition-colors">
+                          {letter.title}
+                        </h4>
+                        <p className="text-xs text-gray-500 mb-1">{letter.author}</p>
+                        <p className="text-xs text-gray-600 line-clamp-2">{letter.excerpt}</p>
+                        <p className="text-xs text-gray-400 mt-1">{letter.date}</p>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="w-full mt-4 py-2 bg-[#185a82] text-white text-sm rounded-full hover:bg-[#0b5ed7] transition font-medium"
+              >
+                Read All Letters
+              </motion.button>
             </motion.div>
 
             {/* Newsletter Signup */}
