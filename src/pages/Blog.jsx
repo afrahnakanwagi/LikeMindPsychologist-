@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Search, Calendar, User, ArrowRight, Filter, X } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+// import logo from '../assests/logo.png';
 
 export default function Blog() {
   // Sample articles data
