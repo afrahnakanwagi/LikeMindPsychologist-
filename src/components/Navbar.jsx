@@ -10,7 +10,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50"
       style={{
         // Glassy cyan (80% opacity + blur)
-        backgroundColor: "rgba(157, 213, 214, 0.80)",
+        backgroundColor: "#ffff",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 12px rgba(0,0,0,0.1)",
@@ -20,10 +20,10 @@ export default function Navbar() {
         {/* LOGO – BIGGER, WITH WHITE BACKGROUND AND ROUND BORDER */}
         <div className="flex items-center">
           <div
-            className="flex items-center justify-center rounded-full bg-[#9dd5d6]"
+            className="flex items-center justify-center w-32 h-32 md:w-30 md:h-30 rounded-full bg-[#9dd5d6]"
             style={{
-              width: "130px",
-              height: "130px",
+              // width: "130px",
+              // height: "130px",
               border: "3px solid #9dd5d6",
               boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
             }}
@@ -31,7 +31,7 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Like Mind Psychologist Logo"
-              className="w-100 h-100 object-contain rounded-full"
+              className="w-60 h-60 object-contain rounded-full"
               style={{
                 filter: "drop-shadow(0 0 4px rgba(0,0,0,0.1))",
               }}
@@ -41,15 +41,15 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <ul
-          className="hidden md:flex items-center space-x-6 text-sm font-medium"
-          style={{ fontFamily: "'Alegreya Sans', sans-serif", color: "#3c3333" }}
+          className="hidden md:flex items-center space-x-8 text-xl font-medium"
+          style={{ fontFamily: "'Alegreya Sans', sans-serif", color: "#3c3333",}}
         >
           <li><a href="/" className="hover:text-[#185a82] transition">Home</a></li>
           <li><a href="/about" className="hover:text-[#185a82] transition">About Us</a></li>
-          <li><a href="/services" className="hover:text-[#185a82] transition">Our Services</a></li>
-          <li><a href="/books-resources" className="hover:text-[#185a82] transition">Books & Resources</a></li>
+          <li><a href="/services" className="hover:text-[#185a82] transition">Services</a></li>
+          <li><a href="/books-resources" className="hover:text-[#185a82] transition">Resources</a></li>
           {/* <li><a href="/education" className="hover:text-[#185a82] transition">Education</a></li> */}
-          <li><a href="/membership" className="hover:text-[#185a82] transition">Membership</a></li>
+          <li><a href="/membership" className="hover:text-[#185a82] transition">Book Club</a></li>
           <li><a href="/shop" className="hover:text-[#185a82] transition">Ecommerce</a></li>
           <li><a href="/blog" className="hover:text-[#185a82] transition">Blog</a></li>
           <li><a href="/contact" className="hover:text-[#185a82] transition">Contact</a></li>
@@ -113,10 +113,10 @@ export default function Navbar() {
         >
           <li><a href="/" className="block hover:text-[#185a82]">Home</a></li>
           <li><a href="/about" className="block hover:text-[#185a82]">About Us</a></li>
-          <li><a href="/services" className="block hover:text-[#185a82]">Our Services</a></li>
+          <li><a href="/services" className="block hover:text-[#185a82]">Services</a></li>
           <li><a href="/books-resources" className="block hover:text-[#185a82]">Books & Resources</a></li>
           {/* <li><a href="/education" className="block hover:text-[#185a82]">Education</a></li> */}
-          <li><a href="/membership" className="block hover:text-[#185a82]">Membership</a></li>
+          <li><a href="/membership" className="block hover:text-[#185a82]">Book Club</a></li>
           <li><a href="/shop" className="block hover:text-[#185a82]">Ecommerce</a></li>
           <li><a href="/blog" className="block hover:text-[#185a82]">Blog</a></li>
           <li><a href="/contact" className="block hover:text-[#185a82]">Contact</a></li>

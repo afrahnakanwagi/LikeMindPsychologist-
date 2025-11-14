@@ -163,8 +163,8 @@ export default function Blog() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#185a82] mb-6 leading-tight">
-              OUR <span className="text-[#1c8ca0]">BLOG</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#3c3333] mb-6 leading-tight">
+              OUR <span className="text-[#3c3333]">BLOG</span>
             </h1>
             <p className="text-gray-700 text-lg mb-8 leading-relaxed max-w-3xl mx-auto">
               Evidence-based insights, professional development, and clinical wisdom for licensed psychologists committed to excellence in practice.
@@ -289,7 +289,7 @@ export default function Blog() {
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#185a82] text-white rounded-full hover:bg-[#0b5ed7] transition font-medium"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#ffffff] border border-[#185a82] text-[#185a82] rounded-full hover:bg-[#185a82] hover:text-white transition font-medium"
                 >
                   Join the Discussion
                   <ArrowRight className="w-4 h-4" />
@@ -297,7 +297,7 @@ export default function Blog() {
               </div>
             </motion.article>
 
-            <h2 className="text-3xl font-bold text-[#185a82] mb-8">Latest Articles</h2>
+            <h2 className="text-3xl font-bold text-[#3c3333] mb-8">Latest Articles</h2>
 
             {/* Articles Grid */}
             {paginatedArticles.length > 0 ? (
@@ -453,7 +453,7 @@ export default function Blog() {
               </div>
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                className="w-full mt-4 py-2 bg-[#185a82] text-white text-sm rounded-full hover:bg-[#0b5ed7] transition font-medium"
+                className="w-full mt-4 py-2 bg-[#185a82] text-white text-sm rounded-full hover:bg-[#185a82] transition font-medium"
               >
                 Read All Letters
               </motion.button>

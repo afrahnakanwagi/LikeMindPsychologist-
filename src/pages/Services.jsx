@@ -2,56 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
-
-
-// === Impact Section ===
-function ImpactSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
-  const stats = [
-    { stat: 85, suffix: "%", desc: "Report improved overall wellness" },
-    { stat: 90, suffix: "%", desc: "Feel more spiritually connected" },
-    { stat: 3500, suffix: "+", desc: "Active community members" },
-    { stat: 200, suffix: "+", desc: "Books shared monthly" },
-  ];
-
-  return (
-    <section
-      ref={ref}
-      className="bg-gradient-to-r from-[#185a82] to-[#1c8ca0] text-white py-20"
-    >
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-10">Our Impact</h2>
-        <div className="grid md:grid-cols-4 gap-8">
-          {stats.map((item, i) => (
-            <motion.div
-              key={i}
-              className="bg-white/10 p-8 rounded-2xl backdrop-blur-md shadow-md"
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.2, duration: 0.6 }}
-            >
-              <p className="text-4xl font-bold mb-2">
-                {inView && (
-                  <CountUp
-                    start={0}
-                    end={item.stat}
-                    duration={2}
-                    suffix={item.suffix}
-                    separator=","
-                  />
-                )}
-              </p>
-              <p className="text-sm opacity-90">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // === Fade-in Wrapper ===
 const FadeInWhenVisible = ({ children, delay = 0 }) => {
@@ -110,9 +62,9 @@ export default function Services() {
             transition={{ duration: 1 }}
             className="md:w-1/2 text-center md:text-left"
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold text-[#185a82] mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#3c3333] mb-6 leading-tight">
               Compassionate Care for <br />
-              <span className="text-[#1c8ca0]">Mind, Body & Spirit</span>
+              <span className="text-[#3c3333]">Mind, Body & Spirit</span>
             </h1>
             <p className="text-gray-700 text-lg mb-8 leading-relaxed">
               Experience holistic wellness services designed to nurture your
@@ -188,19 +140,14 @@ export default function Services() {
         ]}
       />
 
-      <ImpactSection />
 
-      <Testimonials />
+      {/* <Testimonials /> */}
       <ServicePackages />
       <CallToAction />
       <Footer />
     </div>
   );
 }
-
-// --------------------------- Reusable Components ---------------------------
-
-// --------------------------- Reusable Components ---------------------------
 
 function Section({ title, subtitle, cards, bg, onCardClick }) {
   return (
@@ -234,45 +181,45 @@ function Section({ title, subtitle, cards, bg, onCardClick }) {
   );
 }
 
-function Testimonials() {
-  const data = [
-    {
-      quote:
-        "The book club has changed how I view healing — it’s more than reading; it’s connection and transformation.",
-      author: "Sarah Mitchell, Member",
-    },
-    {
-      quote:
-        "The CE-accredited programs and peer groups have deepened my professional empathy and clinical insight.",
-      author: "Dr. James Chen, Psychologist",
-    },
-    {
-      quote:
-        "I feel seen, heard, and renewed after every consultation. It’s holistic healing at its finest.",
-      author: "Maria Rodriguez, Wellness Seeker",
-    },
-  ];
+// function Testimonials() {
+//   const data = [
+//     {
+//       quote:
+//         "The book club has changed how I view healing — it’s more than reading; it’s connection and transformation.",
+//       author: "Sarah Mitchell, Member",
+//     },
+//     {
+//       quote:
+//         "The CE-accredited programs and peer groups have deepened my professional empathy and clinical insight.",
+//       author: "Dr. James Chen, Psychologist",
+//     },
+//     {
+//       quote:
+//         "I feel seen, heard, and renewed after every consultation. It’s holistic healing at its finest.",
+//       author: "Maria Rodriguez, Wellness Seeker",
+//     },
+//   ];
 
-  return (
-    <section className="py-20 max-w-6xl mx-auto px-6 text-center">
-      <h2 className="text-3xl font-bold text-[#3c3333] mb-10">
-        What Our Clients Say
-      </h2>
-      <div className="grid md:grid-cols-3 gap-8">
-        {data.map((item, i) => (
-          <FadeInWhenVisible key={i} delay={i * 0.1}>
-            <div className="bg-white p-8 rounded-2xl shadow-md border italic hover:shadow-xl transition">
-              “{item.quote}”
-              <p className="mt-4 font-semibold text-[#185a82] not-italic">
-                — {item.author}
-              </p>
-            </div>
-          </FadeInWhenVisible>
-        ))}
-      </div>
-    </section>
-  );
-}
+//   return (
+//     <section className="py-20 max-w-6xl mx-auto px-6 text-center">
+//       <h2 className="text-3xl font-bold text-[#3c3333] mb-10">
+//         What Our Clients Say
+//       </h2>
+//       <div className="grid md:grid-cols-3 gap-8">
+//         {data.map((item, i) => (
+//           <FadeInWhenVisible key={i} delay={i * 0.1}>
+//             <div className="bg-white p-8 rounded-2xl shadow-md border italic hover:shadow-xl transition">
+//               “{item.quote}”
+//               <p className="mt-4 font-semibold text-[#185a82] not-italic">
+//                 — {item.author}
+//               </p>
+//             </div>
+//           </FadeInWhenVisible>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
 function ServicePackages() {
   const packages = [
@@ -310,7 +257,7 @@ function ServicePackages() {
   return (
     <section className="bg-[#f5fbfb] py-20 text-center">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-[#3c3333] mb-10">
+        <h2 className="text-3xl font-bold text-[#185a82] mb-10">
           Service Packages
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -341,10 +288,10 @@ function ServicePackages() {
 function CallToAction() {
   return (
     <section className="text-center py-20 bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa]">
-      <h2 className="text-3xl font-bold text-[#185a82] mb-4">
+      <h2 className="text-3xl font-bold text-[#3c3333] mb-4">
         Start Your Wellness Journey Today
       </h2>
-      <p className="max-w-2xl mx-auto mb-6 text-gray-700">
+      <p className="max-w-2xl mx-auto mb-6 text-[#000000]">
         Take the first step toward comprehensive mental and spiritual wellness.
         Our psychologists and wellness coaches are here to walk with you.
       </p>

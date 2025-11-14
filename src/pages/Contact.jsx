@@ -154,15 +154,15 @@ export default function Contact() {
           <InfoCard
             title="Contact Details"
             items={[
-              { icon: <Mail size={18} />, text: "info@likemindpsychologist.com" },
-              { icon: <Phone size={18} />, text: "+1 (555) 123-4567" },
+              { icon: <Mail size={18} />, text: " likemindpsychologist@gmail.com" },
+              { icon: <Phone size={18} />, text: " +256- 776 205 139" },
               {
                 icon: <Clock size={18} />,
                 text: "Mon - Fri: 9:00 AM - 6:00 PM EST",
               },
               {
                 icon: <MapPin size={18} />,
-                text: "123 Wellness Way, Suite 100, City, State 12345",
+                text: " Nalumunye, Jumayi, Kampala, Uganda",
               },
             ]}
           />
@@ -179,9 +179,9 @@ export default function Contact() {
             title="Connect With Us"
             socials={[
               { icon: <Facebook size={18} />, link: "#" },
-              { icon: <Instagram size={18} />, link: "#" },
-              { icon: <Twitter size={18} />, link: "#" },
-              { icon: <Linkedin size={18} />, link: "#" },
+              { icon: <Instagram size={18} />, link: "https://www.instagram.com/likemindpsych?igsh=M2prZGVlZ2hqMmc4" },
+              { icon: <Twitter size={18} />, link: "https://x.com/LMPsychologist?t=lSDFD1n6YOO8ws3kbIOb_w&s=08" },
+              { icon: <Linkedin size={18} />, link: "https://www.linkedin.com/company/lmpsychologist/" },
             ]}
           />
         </motion.div>
@@ -242,10 +242,10 @@ export default function Contact() {
           <p className="font-semibold text-[#185a82] mb-1">
             Like Mind Psychologist Book Club
           </p>
-          <p>123 Wellness Way, Suite 100</p>
-          <p>City, State 12345</p>
-          <p>Phone: +1 (555) 123-4567</p>
-          <p>Email: info@likemindpsychologist.com</p>
+          <p>Nalumunye, Jumayi</p>
+          <p>Kampala, Uganda</p>
+          <p>Phone:  +256- 776 205 139</p>
+          <p>Email: likemindpsychologist@gmail.com</p>
         </div>
       </Section>
 
@@ -259,7 +259,7 @@ export default function Contact() {
 function InfoCard({ title, items, links, socials }) {
   return (
     <div className="bg-white rounded-2xl shadow-md border p-6">
-      <h3 className="font-semibold text-[#185a82] mb-4">{title}</h3>
+      <h3 className="font-semibold text-[#3c3333] mb-4">{title}</h3>
       {items && (
         <ul className="space-y-2 text-sm text-gray-700">
           {items.map((item, i) => (
@@ -273,14 +273,14 @@ function InfoCard({ title, items, links, socials }) {
       {links && (
         <ul className="space-y-2 text-sm text-gray-700">
           {links.map((link, i) => (
-            <li key={i} className="hover:text-[#1c8ca0] cursor-pointer">
+            <li key={i} className="hover:text-[#3c3333] cursor-pointer">
               → {link}
             </li>
           ))}
         </ul>
       )}
       {socials && (
-        <div className="flex gap-4 text-[#185a82] mt-2">
+        <div className="flex gap-4 text-[#3c3333] mt-2">
           {socials.map((s, i) => (
             <a
               key={i}
@@ -308,8 +308,8 @@ function FAQSection() {
   ];
 
   return (
-    <Section title="Frequently Asked Questions">
-      <div className="max-w-2xl mx-auto space-y-3">
+    <Section title="Frequently Asked Questions" color="#3c3333">
+      <div className="max-w-2xl text-[#3c3333] mx-auto space-y-3">
         {faqs.map((faq, i) => (
           <div
             key={i}
@@ -338,13 +338,13 @@ function Section({ title, subtitle, children }) {
   return (
     <section
       ref={ref}
-      className="py-20 text-center bg-gradient-to-b from-white to-[#f9fbfc]"
+      className="py-20 text-center bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa] text-[#3c3333] overflow-hidden"
     >
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-bold text-[#185a82] mb-3"
+        className="text-3xl font-bold text-[#3c3333] mb-3"
       >
         {title}
       </motion.h2>

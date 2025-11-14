@@ -5,10 +5,43 @@ import Footer from "../components/Footer";
 import SubscriptionPopup from "../components/SubscriptionPopup";
 import logo from "../assests/logo.png";
 import book from "../assests/book.png";
+import image from "../assests/image.png";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+    FaEnvelope, FaPhone,
+} from "react-icons/fa";
 
 
 export default function HomePage() {
     const [theme, setTheme] = useState("dark");
+    const FadeInWhenVisible = ({ children, delay = 0 }) => {
+        const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+        return (
+            <motion.div
+                ref={ref}
+                initial={{ opacity: 0, y: 40 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay, duration: 0.6, ease: "easeOut" }}
+            >
+                {children}
+            </motion.div>
+        );
+    };
+
+
+    const navigate = useNavigate();
+    const handleCardClick = (title) => {
+        const lowerTitle = title.toLowerCase();
+        if (
+            lowerTitle.includes("group therapy") ||
+            lowerTitle.includes("online resources")
+        ) {
+            navigate("/education");
+        }
+    };
+
 
     // Load saved theme or detect system preference
     useEffect(() => {
@@ -113,24 +146,25 @@ export default function HomePage() {
                             <button
                                 className="px-6 py-3 rounded-full shadow-lg font-semibold transition"
                                 style={{
-                                    backgroundColor: "#5DA8A3",
-                                    color: "#000000",
+                                    backgroundColor: "#185a82",
+                                    color: "#ffff",
                                     boxShadow: "0 4px 15px rgba(93, 168, 163, 0.4)",
                                 }}
-                                onMouseEnter={(e) => (e.target.style.backgroundColor = "#4a8a8a")}
-                                onMouseLeave={(e) => (e.target.style.backgroundColor = "#5DA8A3")}
+                                onMouseEnter={(e) => (e.target.style.backgroundColor = "#185a82")}
+                                onMouseLeave={(e) => (e.target.style.backgroundColor = "#185a82")}
                             >
                                 Join the Book Club
                             </button>
                             <button
                                 className="border-2 px-6 py-3 rounded-full font-semibold transition"
                                 style={{
-                                    borderColor: "#5DA8A3",
-                                    color: "#5DA8A3",
+                                    borderColor: "#185a82",
+                                    backgroundColor: "#ffffff",
+                                    color: "#185a82",
                                 }}
                                 onMouseEnter={(e) => {
-                                    e.target.style.backgroundColor = "#5DA8A3";
-                                    e.target.style.color = "#000000";
+                                    e.target.style.backgroundColor = "#185a82";
+                                    e.target.style.color = "#ffff";
                                 }}
                                 onMouseLeave={(e) => {
                                     e.target.style.backgroundColor = "transparent";
@@ -142,34 +176,52 @@ export default function HomePage() {
                             </button>
                         </div>
                     </div>
-                    <div className="mt-12 md:mt-0 md:w-1/2 flex justify-center">
+                    <div
+                        className="relative w-240 h-80 md:w-116 md:h-96 rounded-full overflow-hidden shadow-2xl border-2"
+                        style={{
+                            borderColor: "rgba(255,255,255,0.3)",
+                            boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                        }}
+                    >
                         <img
-                            src={logo}
-                            alt="Community"
-                            className="rounded-3xl shadow-2xl border-4 w-full max-w-md md:max-w-lg"
-                            style={{ borderColor: "#5DA8A366" }}
+                            src={image}
+                            alt="The Gifts of Imperfection  Current Book Club"
+                            className="w-full h-full object-cover"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="absolute bottom-6 left-6 text-white">
+                        </div>
                     </div>
                 </div>
             </section>
-            {/* Featured Book */}
-            <section className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
-                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-                    <img
-                        src={book}
-                        alt="The Gifts of Imperfection by Brené Brown"
-                        className="w-full md:w-1/2 rounded-2xl shadow-xl border-2"
-                        style={{ borderColor: `${c.accent}4d` }}
-                    />
-                    <div className="md:w-1/2 text-left">
+            {/* Featured Book – Smaller & Responsive */}
+            <section className="py-16 md:py-24" style={{ backgroundColor: "#FFFFFF" }}>
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+
+                    {/* Image – Reduced Size */}
+                    <div className="w-full md:w-5/12 lg:w-4/12">
+                        <img
+                            src={book}
+                            alt="The Gifts of Imperfection by Brené Brown"
+                            className="w-full h-auto max-w-xs md:max-w-none rounded-2xl shadow-xl border-2 mx-auto md:mx-0"
+                            style={{
+                                borderColor: `${c.accent}4d`,
+                                maxHeight: '380px', // Limits height on large screens
+                                objectFit: 'cover'
+                            }}
+                        />
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="md:w-7/12 lg:w-8/12 text-center md:text-left">
                         <h2
-                            className="text-3xl font-semibold mb-4"
+                            className="text-2xl md:text-3xl font-semibold mb-3"
                             style={{
                                 fontFamily: "'Alegreya Sans SC', Alegreya Sans",
-                                color: "#185a82",
+                                color: "#3c3333",
                             }}
                         >
-                            Featured Book: *The Gifts of Imperfection*
+                            Featured Book: <em>The Gifts of Imperfection</em>
                         </h2>
                         <h3
                             className="text-lg font-medium mb-3"
@@ -181,7 +233,7 @@ export default function HomePage() {
                             by Brené Brown
                         </h3>
                         <p
-                            className="mb-6 leading-relaxed text-base"
+                            className="mb-5 leading-relaxed text-base"
                             style={{ color: c.accent }}
                         >
                             In this powerful guide to wholehearted living, Brené Brown explores
@@ -191,30 +243,203 @@ export default function HomePage() {
                         </p>
 
                         <p
-                            className="italic mb-6 text-sm"
+                            className="italic mb-6 text-sm max-w-xl mx-auto md:mx-0"
                             style={{ color: "#555" }}
                         >
-                            📚 In our Book Club, each book is read and discussed for a period of 3 months — allowing time for reflection, application, and meaningful conversations.
+                            In our Book Club, each book is read and discussed for a period of 3 months — allowing time for reflection, application, and meaningful conversations.
                         </p>
 
-                        <button
-                            className="px-6 py-3 rounded-full font-semibold shadow-md transition"
-                            style={{
-                                backgroundColor: "#185a82",
-                                color: "#ffffff",
-                                boxShadow: `0 4px 12px ${c.accent}3d`,
-                            }}
-                            onMouseEnter={(e) => (e.target.style.backgroundColor = c.hover)}
-                            onMouseLeave={(e) => (e.target.style.backgroundColor = c.accent)}
-                        >
-                            View This Quarter’s Book
-                        </button>
+                        <div className="flex justify-center md:justify-start">
+                            <button
+                                className="px-6 py-3 rounded-full font-semibold shadow-md transition transform hover:scale-105"
+                                style={{
+                                    backgroundColor: "#185a82",
+                                    color: "#ffffff",
+                                    boxShadow: `0 4px 12px ${c.accent}3d`,
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.backgroundColor = "#185a82";
+                                    e.target.style.transform = 'translateY(-2px)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.backgroundColor = "#185a82";
+                                    e.target.style.transform = 'translateY(0)';
+                                }}
+                            >
+                                View This Quarter's Book
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
 
+            {/* ================= CORE SERVICES ================= */}
+            <section className="py-20 px-6 bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa]">
+                <div className="max-w-7xl mx-auto text-center">
+                    {/* Title */}
+                    <h2
+                        className="text-3xl md:text-4xl font-bold mb-4"
+                        style={{
+                            fontFamily: "'Alegreya Sans SC', sans-serif",
+                            color: "#3c3333",
+                        }}
+                    >
+                        Our Core Services
+                    </h2>
+
+                    {/* Subtitle */}
+                    <p className="text-lg mb-12 max-w-3xl mx-auto" style={{ color: "#000000" }}>
+                        Comprehensive care designed to restore balance, faith, and emotional well-being.
+                    </p>
+
+                    {/* Cards Grid */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "Overview of Psychotherapy Services",
+                                desc: "Individual, couples, and family therapy sessions tailored to your unique emotional and relational needs.",
+                            },
+                            {
+                                title: "Group Therapy / Peer-to-Peer & Workshops",
+                                desc: "Interactive group sessions and workshops for shared healing, growth, and skill-building.",
+                            },
+                            {
+                                title: "Mentorship and Coaching",
+                                desc: "Personal and professional mentorship programs that integrate psychology, leadership, and spirituality.",
+                            },
+                            {
+                                title: "Curriculum Development on Mental Health and Faith",
+                                desc: "Custom-designed educational content and frameworks merging faith-based values with mental wellness principles.",
+                            },
+                            {
+                                title: "Online Resources (Articles, Podcasts, Videos)",
+                                desc: "Access digital tools for ongoing self-improvement — curated resources for learning and reflection.",
+                            },
+                            {
+                                title: "Community Events",
+                                desc: "Join our mental health programs, conferences, and retreats that inspire deeper connection and healing.",
+                            },
+                            {
+                                title: "Pricing and Packages",
+                                desc: "Explore flexible options designed to fit your personal or organizational wellness goals.",
+                            },
+                        ].map((card, i) => (
+                            <div
+                                key={i}
+                                onClick={() => handleCardClick(card.title)}
+                                className="group cursor-pointer bg-white rounded-xl shadow-md p-6 border border-[#9dd5d6]/30 hover:shadow-xl transition-all duration-300"
+                            >
+                                <h3
+                                    className="font-semibold text-xl mb-3"
+                                    style={{ color: "#185a82" }}
+                                >
+                                    {card.title}
+                                </h3>
+                                <p className="text-base leading-relaxed" style={{ color: c.accent }}>
+                                    {card.desc}
+                                </p>
+
+                                {/* Arrow on hover */}
+                                <div className="mt-4 flex justify-end opacity-0 group-hover:opacity-100 transition">
+                                    <svg
+                                        className="w-5 h-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        viewBox="0 0 24 24"
+                                        style={{ color: c.hover }}
+                                    >
+                                        <path d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* TEAM - Modern Card Design */}
+            <section className="py-24 px-6 bg-gray-50">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="text-[#185a82] font-semibold text-3xl font-bold mb-4 tracking-wider uppercase">Our Team</span>
+                        <p className="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                            United by faith, driven by excellence, committed to transforming lives
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                name: 'Dr. Esther Mbabazi',
+                                role: 'Clinical Psychologist',
+                                specialty: 'CBT Specialist',
+                                email: 'esther@likemind.com',
+                                phone: '+256 700 123 456',
+                                img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'
+                            },
+                            {
+                                name: 'Pastor James Okello',
+                                role: 'Chaplain & Counselor',
+                                specialty: 'Faith Integration',
+                                email: 'james@likemind.com',
+                                phone: '+256 700 789 012',
+                                img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'
+                            },
+                            {
+                                name: 'Sarah Nansubuga',
+                                role: 'Trauma Therapist',
+                                specialty: 'EMDR Certified',
+                                email: 'sarah@likemind.com',
+                                phone: '+256 700 345 678',
+                                img: 'https://images.unsplash.com/photo-1580489940927-265c7f03a8e4?auto=format&fit=crop&w=800&q=80'
+                            }
+                        ].map((person, i) => (
+                            <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                                <div className="relative h-80 overflow-hidden">
+                                    <img
+                                        src={person.img}
+                                        alt={person.name}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                    <div className="absolute top-4 right-4">
+                                        <span className="px-4 py-2 bg-[#185a82] text-[#ffffff] rounded-full text-sm font-bold">
+                                            {person.specialty}
+                                        </span>
+                                    </div>
+                                    <div className="absolute bottom-4 left-4 text-white">
+                                        <h3 className="text-2xl font-bold mb-1">{person.name}</h3>
+                                        <p className="text-sm opacity-90">{person.role}</p>
+                                    </div>
+                                </div>
+
+                                <div className="p-6">
+                                    <div className="space-y-3 mb-6">
+                                        <a href={`mailto:${person.email}`} className="flex items-center gap-3 text-gray-600 hover:text-[#185a82] transition group/link">
+                                            <FaEnvelope className="text-[#185a82]" />
+                                            <span className="text-sm group-hover/link:underline">{person.email}</span>
+                                        </a>
+                                        <div className="flex items-center gap-3 text-gray-600">
+                                            <FaPhone className="text-[#185a82]" />
+                                            <span className="text-sm">{person.phone}</span>
+                                        </div>
+                                    </div>
+
+                                    <button className="w-full bg-[#185a82] text-white py-3 rounded-xl font-semibold hover:bg-[#185a82] hover:text-[#ffffff] transition-all flex items-center justify-center gap-2 group/btn">
+                                        Connect
+                                        {/* <FaArrowRight className="group-hover/btn:translate-x-1 transition-transform" /> */}
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
             {/* How It Works */}
-            <section className="py-24 text-center px-6 max-w-7xl mx-auto" style={{ backgroundColor: c.section }}>
+            <section className="py-24 text-center px-6 max-w-7xl mx-auto" style={{ backgroundColor: "#185a82" }}>
                 <h2
                     className="text-3xl font-semibold mb-16"
                     style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#ffff" }}
@@ -244,45 +469,11 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Community CTA */}
-            <section className="py-24 text-center" style={{ backgroundColor: "#ffffff" }}>
-                <div className="max-w-5xl mx-auto px-6">
-                    <h2
-                        className="text-3xl font-semibold mb-8"
-                        style={{
-                            fontFamily: "'Alegreya Sans SC', sans-serif",
-                            color: "#185a82",
-                        }}
-                    >
-                        Join a Christ-Centered Community
-                    </h2>
-                    <p
-                        className="max-w-3xl mx-auto text-lg mb-10 leading-relaxed"
-                        style={{ color: c.accent }}
-                    >
-                        Connect with born-again psychologists integrating faith and science. Grow together in wisdom, empathy, and purpose.
-                    </p>
-                    <button
-                        className="px-8 py-3 rounded-full font-semibold shadow-xl transition"
-                        style={{
-                            backgroundColor: "#185a82",
-                            color: "#ffffff",
-                            boxShadow: `0 6px 20px ${c.accent}66`,
-                        }}
-                        onMouseEnter={(e) => (e.target.style.backgroundColor = "#185a82")}
-                        onMouseLeave={(e) => (e.target.style.backgroundColor = "#185a82")}
-                        onClick={() => window.location.href = "/membership"}
-                    >
-                        Become a Member
-                    </button>
-                </div>
-            </section>
-
             {/* Upcoming Workshops */}
-            <section className="py-24 px-6 text-center max-w-7xl mx-auto" style={{ backgroundColor: "#185a82" }}>
+            <section className="py-24 px-6 text-center max-w-7xl mx-auto" style={{ backgroundColor: "#ffff" }}>
                 <h2
                     className="text-3xl font-semibold mb-14"
-                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#ffff" }}
+                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#185a82" }}
                 >
                     Upcoming Faith & Psychology Workshops
                 </h2>
@@ -312,11 +503,11 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Testimonials */}
+            {/* Testimonials
             <section className="py-24 px-6 text-center max-w-7xl mx-auto" style={{ backgroundColor: "#ffffff" }}>
                 <h2
                     className="text-3xl font-semibold mb-12"
-                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#185a82" }}
+                    style={{ fontFamily: "'Alegreya Sans SC', sans-serif", color: "#3c3333" }}
                 >
                     Voices from Our Community
                 </h2>
@@ -341,7 +532,42 @@ export default function HomePage() {
                         </div>
                     ))}
                 </div>
+            </section> */}
+
+            {/* Community CTA */}
+            <section className="py-24 text-center bg-gradient-to-b from-[#9dd5d6] to-[#f9fafa]">
+                <div className="max-w-5xl mx-auto px-6">
+                    <h2
+                        className="text-3xl font-semibold mb-8"
+                        style={{
+                            fontFamily: "'Alegreya Sans SC', sans-serif",
+                            color: "#3c3333",
+                        }}
+                    >
+                        Join a Christ-Centered Community
+                    </h2>
+                    <p
+                        className="max-w-3xl mx-auto text-lg mb-10 leading-relaxed"
+                        style={{ color: c.accent }}
+                    >
+                        Connect with born-again psychologists integrating faith and science. Grow together in wisdom, empathy, and purpose.
+                    </p>
+                    <button
+                        className="px-8 py-3 rounded-full font-semibold shadow-xl transition"
+                        style={{
+                            backgroundColor: "#185a82",
+                            color: "#ffffff",
+                            boxShadow: `0 6px 20px ${c.accent}66`,
+                        }}
+                        onMouseEnter={(e) => (e.target.style.backgroundColor = "#185a82")}
+                        onMouseLeave={(e) => (e.target.style.backgroundColor = "#185a82")}
+                        onClick={() => window.location.href = "/membership"}
+                    >
+                        Become a Member
+                    </button>
+                </div>
             </section>
+
 
             <Footer colors={c} />
 
